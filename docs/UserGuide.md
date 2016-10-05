@@ -16,7 +16,7 @@ Step 3: Copy the file to the folder you want to use as the home folder for your 
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
  <img src="images/GUI.png" width="600"><br>
 Picture 1: A screenshot of the Graphical User Interface (GUI)<br>
-Step 5:	Type the relevant command in the command box and press <kbd>Enter<kbd> to execute it.<br>
+Step 5:	Type the relevant command in the command box and press enter to execute it.<br>
 <br>Step 6: Some example commands you can try:<br>
    * **`list`** : `lists` all contacts
    * **`add`**` buy MA1101R textbook today` : ` adds` a task called buy MA1101R textbook to be done `by` today.
@@ -34,9 +34,8 @@ Refer to the [Features](#features) section below for details of each command.<br
 
 #### Viewing list of commands : `help`
 
-When unsure of the available commands or command format, <kbd>Enter<kbd> help. 
-If you enter an incorrect command eg. search, the instruction for using each command will be
-displayed as well.
+When unsure of the available commands or command format, Enter help. 
+If you enter an incorrect command eg. search, the instruction for using each command will be displayed as well.<br>
  
  Format: `help`
  
@@ -79,7 +78,7 @@ Picture 2: List of tasks due today printed when “List today” is keyed in.
 To view tasks with similar keyword, use the find command.<br>
 Formats: <br>
 -`find KEYWORD [MORE_KEYWORDS]`<br>
-Prints a list of activities that match the keywords.
+Prints a list of activities that match the keywords.<br>
 Example: `find banana milk essay: returns any task description having keywords banana, milk, essay.` <br>
 -`find-tag KEYWORD `<br>
 Prints list of activities with the same tag.<br>
@@ -99,7 +98,7 @@ Format: `undo`
 
 #### Deleting a task : `delete`
 To delete a task, use the delete command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
-Format: `delete INDEX`
+Format: `delete INDEX`<br>
  <img src="images/delete1.png" width="600">
  <img src="images/delete1Result.png" width="600"><br>
 Picture 5: Entering delete 1 will delete “Arrange meeting with XYZ company”<br>
@@ -111,7 +110,7 @@ Example:
 
 #### Editing a task : `edit`
 To edit a task, use the edit command. This command edits the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
-Format: `edit INDEX NEWTASK`
+Format: `edit INDEX NEWTASK`<br>
  <img src="images/editCmd.png" width="600"> <br>
 Picture 6: edit 2 schedule meeting on wednesday: edits the 2nd task in Taskell to “schedule meeting on wednesday”.
 
