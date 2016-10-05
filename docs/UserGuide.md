@@ -14,7 +14,7 @@ Step 2: Download the latest `taskell.jar` from here.<br>
 	 <img src="images/Icon.png" width="100"><br>
 Step 3: Copy the file to the folder you want to use as the home folder for your Task Manager.<br>
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
-   > <img src="images/GUI.png" width="600"><br><
+ <img src="images/GUI.png" width="600"><br>
 Picture 1: A screenshot of the Graphical User Interface (GUI)<br>
 Step 5:	Type the relevant command in the command box and press <kbd>Enter<kbd> to execute it.<br>
 <br>Step 6: Some example commands you can try:<br>
@@ -60,8 +60,7 @@ The use of word “on” gives more flexibility for you.<br>
 - `add TASK ITEM on [DATE][TIME]` <br>
 > Example: `add meet teacher on Friday 7pm` <br>
 
-Take Note! Dates need to refer to the current week dates the task was keyed in. Eg.“tomorrow” and “thursday” is valid but “next Saturday” is invalid. Only the words “on”
-or “by” has to be used to distinguish between deadline and task description.
+TAKE NOTE! DATES NEED TO REFER TO THE CURRENT WEEK DATES THE TASK WAS KEYED IN.EG. "TOORROW" AND "THURSDAY" IS VALID BUT "NEXT SATURDAY" IS INVALID. ONLY THE WORDS "ON" OR"BY" HAS TO BE USED TO DISTINGUISH BETWEEN DEADLINE AND TASK DESCRIPTION.<br>
 
 #### Listing all tasks : `list`
 To view a list of all the tasks, <kbd>Enter<kbd> list.<br>
@@ -81,7 +80,7 @@ To view tasks with similar keyword, use the find command.<br>
 Formats: <br>
 -`find KEYWORD [MORE_KEYWORDS]`<br>
 Prints a list of activities that match the keywords.
-> Example: `find banana milk essay: returns any task description having keywords banana, milk, essay.` <br>
+Example: `find banana milk essay: returns any task description having keywords banana, milk, essay.` <br>
 -`find-tag KEYWORD `<br>
 Prints list of activities with the same tag.<br>
  <img src="images/findReport.png" width="600">
@@ -101,8 +100,8 @@ Format: `undo`
 #### Deleting a task : `delete`
 To delete a task, use the delete command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
 Format: `delete INDEX`
- > <img src="images/delete1.png" width="600">
- > <img src="images/delete1Result.png" width="600"><br>
+ <img src="images/delete1.png" width="600">
+ <img src="images/delete1Result.png" width="600"><br>
 Picture 5: Entering delete 1 will delete “Arrange meeting with XYZ company”<br>
 Example:
 * `find violin, then delete 1: deletes the 1st task in the results of the find command.`
@@ -113,7 +112,7 @@ Example:
 #### Editing a task : `edit`
 To edit a task, use the edit command. This command edits the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
 Format: `edit INDEX NEWTASK`
- > <img src="images/editCmd.png" width="600"> <br>
+ <img src="images/editCmd.png" width="600"> <br>
 Picture 6: edit 2 schedule meeting on wednesday: edits the 2nd task in Taskell to “schedule meeting on wednesday”.
 
 #### Saving the information in Taskell
