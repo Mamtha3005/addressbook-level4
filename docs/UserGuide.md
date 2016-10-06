@@ -59,7 +59,7 @@ The use of word “on” gives more flexibility for you.<br>
 - `add TASK ITEM on [DATE][TIME]` <br>
 > Example: `add meet teacher on Friday 7pm` <br>
 
-TAKE NOTE! DATES NEED TO REFER TO THE CURRENT WEEK DATES THE TASK WAS KEYED IN.EG. "TOORROW" AND "THURSDAY" IS VALID BUT "NEXT SATURDAY" IS INVALID. ONLY THE WORDS "ON" OR"BY" HAS TO BE USED TO DISTINGUISH BETWEEN DEADLINE AND TASK DESCRIPTION.<br>
+Take Note! Dates need to refer to the current week dates the task was keyed in. Eg. “tomorrow” and “thursday” is valid but “next Saturday” is invalid. Only the words “on” or “by” has to be used to distinguish between dateline and task description.
 
 #### Listing all tasks : `list`
 To view a list of all the tasks, <kbd>Enter<kbd> list.<br>
