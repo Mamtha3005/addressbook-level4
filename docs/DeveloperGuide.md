@@ -291,7 +291,7 @@ Priority | As a ... | I want to ... | So that I can...
 `*` | user | be able to block multiple timeslots, and release the timeslots when timing is confirmed|  I can schedule in events which have uncertain timings more efficiently.
 `*` | user with many tasks in Taskell | sort tasks by priority | view the most important tasks.
 `*` | user | edit my notification time period | customise if I wanted to be reminded earlier or later.
-`*` | user |  use the history command | I don’t need to retype it and use it faster.
+`*` | user |  use the history command | I do not need to retype it and use it faster.
 `*` | user |  view the task in either calendar form or list form |  I can see the task more directly.
 
 {More to be added}
