@@ -270,12 +270,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
-`* * *` | new user | see usage instructions | refer to instructions when I forget how to use the Application
-`* * *` | user |  add a task and set time and/or deadlines | take note of all my tasks
-`* * *` | user | delete a person | remove task that I no longer need
-`* * *` | user | find a person by name | locate details of persons without having to go through the entire list
-`* *` | user | hide [private contact details](#private-contact-detail) by default | minimize chance of someone else seeing them by accident
-`*` | user with many persons in the address book | sort persons by name | locate a person easily
+`* * *` | new user | see usage instructions | refer to instructions when I forget how to use the Application.
+`* * *` | user |  add a task and set time and/or deadlines | take note of all my tasks.
+`* * *` | user | delete a task | remove task that I no longer need.
+`* * *` | user | find a task by its description | locate details of tasks without having to go through the entire list.
+`* * *` | user | categorize my tasks | group and view tasks of similar type or tasks of same project.
+`* * *` | user | view all the tasks, sorted by day, week, month | plan my schedule.
+`* * *` | user | add task which has no time limit | can do it without specific times.
+`* * *` | user | edit task | make changes to the task created.
+`* * *` | user | have a start and end time for a task | save the duration of the task.
+`* * *` | user | set deadlines for a task | know when the task is due.
+`* * *` | user | undo the last previous task I wrote | I can recover from accidents.
+`* * *` | user | mark a task as done | I can focus on uncompleted tasks.
+`* * *` | user | have flexible command format | I do not have to waste time trying to remember and get the command format right.
+`* * *` | user | specify a folder with cloud syncing service as the storage location | I can easily access my task planner from different computers.
+`* * *` | user | check whether tasks are completed or yet to be done | I can track the tasks completion.
+`* *` | user | set some of my task recursively | I need not have to manually key them everyday,week,month.
+`* *` | user |  delete tasks based on a certain index | I can delete a few tasks in one go instead of deleting one task at a time.
+`* *` | user | hide private contact details | minimize chance of someone else seeing them by accident.
+`*` | user | be able to block multiple timeslots, and release the timeslots when timing is confirmed|  I can schedule in events which have uncertain timings more efficiently.
+`*` | user with many tasks in Taskell | sort tasks by priority | view the most important tasks.
+`*` | user | edit my notification time period | customise if I wanted to be reminded earlier or later.
+`*` | user |  use the history command | I don’t need to retype it and use it faster.
+`*` | user |  view the task in either calendar form or list form |  I can see the task more directly.
 
 {More to be added}
 
@@ -287,10 +304,10 @@ Priority | As a ... | I want to ... | So that I can...
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows a list of persons
-3. User requests to delete a specific person in the list
-4. AddressBook deletes the person <br>
+1. User requests to list tasks
+2. Tasks shows a list of uncompleted tasks
+3. User requests to delete a specific task in the list
+4. Taskell deletes the task <br>
 Use case ends.
 
 **Extensions**
@@ -301,7 +318,7 @@ Use case ends.
 
 3a. The given index is invalid
 
-> 3a1. AddressBook shows an error message <br>
+> 3a1. Taskell shows an error message <br>
   Use case resumes at step 2
 
 {More to be added}
