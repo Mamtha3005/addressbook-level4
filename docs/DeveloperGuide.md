@@ -294,34 +294,150 @@ Priority | As a ... | I want to ... | So that I can...
 `*` | user |  use the history command | I do not need to retype it and use it faster.
 `*` | user |  view the task in either calendar form or list form |  I can see the task more directly.
 
-{More to be added}
-
 ## Appendix B : Use Cases
 
 (For all use cases below, the **System** is the `TaskManager` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: Delete person
+#### Use case: Add task
+
+**MSS**
+
+1. User requests to add tasks either with or without deadline
+2. Taskell adds the task<br>
+
+> Use case ends
+
+**Extensions**
+
+2a. The user did not follow the given format to add a task or deadline
+
+> 2a1. Taskell shows the help message <br>
+  Use case resumes at step 1
+
+#### Use case: Delete task
 
 **MSS**
 
 1. User requests to list tasks
-2. Tasks shows a list of uncompleted tasks
+2. Taskell shows a list of uncompleted tasks
 3. User requests to delete a specific task in the list
 4. Taskell deletes the task <br>
-Use case ends.
+
+> Use case ends
 
 **Extensions**
 
 2a. The list is empty
-
-> Use case ends
 
 3a. The given index is invalid
 
 > 3a1. Taskell shows an error message <br>
   Use case resumes at step 2
 
-{More to be added}
+#### Use case: Help task
+
+**MSS**
+
+1. User requests to view the different command
+2. User enters "help"
+3. User displays a summary of all the different command.
+
+> Use case ends
+
+**Extensions**
+
+2a. The user types "help" incorrectly
+
+> 3a1. Taskell stil displays the help message <br>
+
+#### Use case: Find task
+
+**MSS**
+
+1. User requests to list tasks
+2. Taskell shows a list of uncompleted tasks
+3. User requests to find tasks with specific keywords
+4. Taskell displays the relevant task <br>
+
+> Use case ends
+
+**Extensions**
+
+2a. The list is empty
+
+3a. The given index is invalid
+
+> 3a1. Taskell shows an error message <br>
+  Use case resumes at step 2
+
+#### Use case: Edit task
+
+**MSS**
+
+1. User requests to list tasks
+2. Taskell shows a list of tasks
+3. User requests to edit the task in the list
+4. AddressBook edits the person's task, including its' deadline <br>
+
+> Use case ends
+
+**Extensions**
+
+2a. The list is empty
+
+3a. The given index is invalid
+3b. The user did not key in the new task
+
+> 3a1 and 3b1. Taskell shows an error message <br>
+  Use case resumes at step 2
+
+#### Use case: Undo task
+
+**MSS**
+
+1. User enters a wrong command
+2. Taskell executed it
+3. User requests to undo the wrong command
+4. Taskell undo the previous command <br>
+
+> Use case ends
+
+**Extensions**
+
+2a. The user did not enter any previous command
+
+> 2a1. Taskell shows an error message <br>
+
+#### Use case: List task
+
+**MSS**
+
+1. User requests to list tasks
+2. Taskell shows a list of tasks
+
+> Use case ends
+
+**Extensions**
+
+2a. The list is empty
+
+> 2a1. Taskell shows an error message <br>
+  Use case resumes at step 2
+  
+#### Use case: Clear task
+
+**MSS**
+
+1. User requests to clear all tasks
+2. Taskell deletes all tasks
+
+> Use case ends
+
+**Extensions**
+
+2a. The list is empty
+
+> 2a1. Taskell shows an error message <br>
 
 ## Appendix C : Non Functional Requirements
 
@@ -329,7 +445,7 @@ Use case ends.
 2. Should be able to hold up to 1000 persons.
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
-
+5. Each command executed under 5 seconds.
 {More to be added}
 
 ## Appendix D : Glossary
