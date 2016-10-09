@@ -158,9 +158,8 @@ The `Model` component,
 
 <img src="images/StorageClassDiagram.png" width="800"><br>
 
-
 The picture above gives an overview of how the `Storage`component is implemented.<br>
-**API** : [`Storage.java`](../src/main/java/seedu/taskell/storage/Storage.java)
+<br>**API** : [`Storage.java`](../src/main/java/seedu/taskell/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
