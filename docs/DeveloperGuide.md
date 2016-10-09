@@ -491,7 +491,7 @@ NIL
 
 ## Appendix E : Product Survey
 #### WunderList
-**Pros: **<br>
+**Pros:**<br>
 1. Support for cross-platform operations<br>
 2. Use tags for any tasks<br>
 3. Share tasks with other people and manage the shared tasks<br> 
@@ -499,25 +499,25 @@ NIL
 5. Attach different types of file inside the task, such as photos, PDF and PowerPoint<br>
 6. Use of short form command<br>
 
-**Cons: **<br>
+**Cons:**<br>
 1. Only have two priority levels<br>
 
 #### Remember the Milk
-**Pros: **<br>
+**Pros:**<br>
 1. Use offline and be synced once internet connection is established<br>
-2. Handle some natural language processing by saving deadlines from task information itself (e.g. Enter: “do math homework by tomorrow”, will save task with deadline set to tomorrow’s date)<br>
+2. Handle some natural language processing by saving deadlines from task information itself (e.g. Do math homework by tomorrow: Saves task with deadline set to tomorrow’s date)<br>
 3. Undo operation when marking tasks as done (recover from accidentally clicking done)
 4. Set priority with ordering<br>
 5. Set recursive tasks<br>
 
-**Cons: **<br>
+**Cons:**<br>
 1. Need to click frequently to enter a task (if using desktop, not application) <br>
 2. Need to remember lots of shortcuts to remember, so user is less likely to use them<br>
 3. Display of the interface is cluttered, not intuitive<br>
 4. Does not support calendar view in-house, but there are plugins that display calendar views<br>
 
 #### Google Calendar
-**Pros: **<br>
+**Pros:**<br>
 1. Able to add in public holidays <br>
 2. Can update in terms of time zone<br>
 3. Can customize background picture<br>
@@ -527,12 +527,12 @@ NIL
 2. Information is too much in 1 page in application<br>
 
 #### Any.do
-**Pros: **<br>
+**Pros:**<br>
 1. Displays a reminder when the task is almost due (set in advance)<br>
 2. Able to clear all tasks in one go<br>
 3. Do a daily review at the start/end of day<br>
 4. Arrange tasks by Today, Tomorrow, someday<br>
 
 
-**Cons: **<br>
+**Cons:**<br>
 1. Require internet connection<br>
