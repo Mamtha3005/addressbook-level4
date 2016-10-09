@@ -78,7 +78,7 @@ Each of the four components
 
 <br><img src="images/LogicClassDiagram.png" width="800"><br>
 
-Example: the `Logic` component (as shown above) defines it's API in the `Logic.java`
+The `Logic` component above defines it's API in the `Logic.java`
 interface and exposes its functionality using the `LogicManager.java` class.<br>
 
 <img src="images\SDforDeleteTask.png" width="800">
