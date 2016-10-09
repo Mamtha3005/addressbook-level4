@@ -16,7 +16,7 @@
 
 Taskell is a simple software for users to keep track of their daily tasks. This software thus would help users to manage their busy schedule. 
 
-This guide describes the design and implementation of Taskell. This guide will help you understand how Taskell works so that you can join our team in assisting for the development of this software.
+This guide describes the design and implementation of Taskell. This will help you understand how Taskell works so that you can join our team in assisting for the development of this software.
 
 ## Setting up
 
@@ -52,10 +52,11 @@ This guide describes the design and implementation of Taskell. This guide will h
 ### Architecture
 
 <img src="images/Architecture.png" width="600"><br>
-<br>The Architecture Diagram given above explains the high-level design of the Application.
-Given below is a quick overview of each component.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
+The Architecture Diagram given above explains the high-level design of the Application.
+Given below is a quick overview of each component.<br>
+
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/taskell/MainApp.java). It is responsible for,
 * At application launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
@@ -85,7 +86,7 @@ interface and exposes its functionality using the `LogicManager.java` class.<br>
 The Sequence Diagram above shows how the components interact for the scenario where the user issues the
 command `delete 1`.
 
->Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data are changed,
+>Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data is changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
 <br><img src="images\SDforDeleteTaskEventHandling.png" width="800">
@@ -126,24 +127,25 @@ The `UI` component,
 <img src="images/LogicClassDiagram.png" width="800"><br>
 
 The picture above gives an overview of how the `Logic`component is implemented.<br>
-**API** : [`Logic.java`](../src/main/java/seedu/taskell/logic/Logic.java)
+<br>**API** : [`Logic.java`](../src/main/java/seedu/taskell/logic/Logic.java)
 
 The `Logic` component,
 * Uses the `Parser` class to parse the user command: results in a `Command` object which is executed by the `LogicManager`.
 * Affects the `Model` (e.g. adding a task) and/or raise events.
 * Executes the necessary command and the result is encapsulated as a  `CommandResult` to be passed back to the `Ui`.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
- API call.<br>
 <br><img src="images/DeleteTaskSdForLogic.png" width="800"><br>
 
+The picture above shows the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
+ API call.<br>
+ 
 ### Model Component
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 
 
 The picture above gives an overview of how the `Model`component is implemented.<br>
-**API** : [`Model.java`](../src/main/java/seedu/taskell/model/Model.java)
+<br>**API** : [`Model.java`](../src/main/java/seedu/taskell/model/Model.java)
 
 The `Model` component,
 * stores a `UserPref` object that represents the user's preferences.
@@ -162,7 +164,7 @@ The picture above gives an overview of how the `Storage`component is implemented
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the Address Book data in xml format and read it back.
+* can save the Task Manager data in xml format and read it back.
 
 ### Common Classes
 
@@ -184,7 +186,7 @@ and logging destinations.
 **Logging Levels**
 
 * `SEVERE` : Critical problem detected which may possibly cause the termination of the application
-* `WARNING` : Can continue, but with caution
+* `WARNING` : Program can continue, but with caution
 * `INFO` : Information showing the noteworthy actions by the Application
 * `FINE` : Details that is not usually noteworthy but may be useful in debugging
   e.g. print the actual list instead of just its size
