@@ -424,6 +424,21 @@ Priority | As a ... | I want to ... | So that I can...
 > 2a1. Taskell shows an error message <br>
   Use case resumes at step 2
   
+#### Use case: Store data in cloud syncing folder
+
+**MSS**
+
+1. User requests to save all tasks
+2. Taskell saves all tasks in the requested folder
+
+> Use case ends
+
+**Extensions**
+
+2a. The requested folder does not exist
+
+> 2a1. Taskell shows an error message <br>
+
 #### Use case: Clear task
 
 **MSS**
@@ -439,6 +454,19 @@ Priority | As a ... | I want to ... | So that I can...
 
 > 2a1. Taskell shows an error message <br>
 
+#### Use case: Exit task
+
+**MSS**
+
+1. User requests to exit Taskell
+2. Taskell saves all the data and stops
+
+> Use case ends
+
+**Extensions**
+
+NIL
+
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
@@ -446,7 +474,6 @@ Priority | As a ... | I want to ... | So that I can...
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
 5. Each command executed under 5 seconds.
-{More to be added}
 
 ## Appendix D : Glossary
 
