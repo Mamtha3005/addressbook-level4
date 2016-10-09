@@ -522,7 +522,7 @@ NIL
 2. Can update in terms of time zone<br>
 3. Can customize background picture<br>
 
-**Cons: **<br>
+**Cons:**<br>
 1. Flexibility in the way to view the calendar is limited<br>
 2. Information is too much in 1 page in application<br>
 
