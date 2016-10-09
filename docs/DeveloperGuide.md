@@ -1,5 +1,6 @@
 # Developer Guide 
 
+* [Introduction](#introduction)
 * [Setting Up](#setting-up)
 * [Design](#design)
 * [Implementation](#implementation)
@@ -11,6 +12,11 @@
 * [Appendix D: Glossary](#appendix-d--glossary)
 * [Appendix E : Product Survey](#appendix-e-product-survey)
 
+##Introduction
+
+Taskell is a simple software for users to keep track of their daily tasks. This software thus would help users to manage their busy schedule. 
+
+This guide describes the design and implementation of Taskell. This guide will help you understand how Taskell works so that you can join our team in assisting for the development of this software.
 
 ## Setting up
 
@@ -27,7 +33,7 @@
 4. **Buildship Gradle Integration** plugin from the Eclipse Marketplace
 
 
-#### Importing the project into Eclipse
+#### Importing The Project Into Eclipse
 
 0. Fork this repository, and clone the fork to your computer
 1. Open Eclipse (Note: Ensure you have installed the **e(fx)clipse** and **buildship** plugins as given in the prerequisites above)
@@ -46,44 +52,46 @@
 ### Architecture
 
 <img src="images/Architecture.png" width="600"><br>
-The **_Architecture Diagram_** given above explains the high-level design of the Application.
+<br>The Architecture Diagram given above explains the high-level design of the Application.
 Given below is a quick overview of each component.
 
 `Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
-* At application launch: Initializes the components in the correct sequence, and connect them up with each other.
-* At shut down: Shuts down the components and invoke cleanup method where necessary.
+* At application launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At shut down: Shuts down the components and invokes cleanup method where necessary.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
-* `EventsCentre` : This class (written using [Google's Event Bus library](https://github.com/google/guava/wiki/EventBusExplained))
-  is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)
+* `EventsCentre` : Used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)(written using [Google's Event Bus library](https://github.com/google/guava/wiki/EventBusExplained))
+
 * `LogsCenter` : Used by many classes to write log messages to the Application's log file.
 
 The rest of the Application consists four components.
-* [**`UI`**](#ui-component) : The UI of the Application.
-* [**`Logic`**](#logic-component) : The command executor.
-* [**`Model`**](#model-component) : Holds the data of the Application in-memory.
-* [**`Storage`**](#storage-component) : Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#ui-component) : UI of the Application.
+* [**`Logic`**](#logic-component) : Command executor.
+* [**`Model`**](#model-component) : Data Holder of the Application in-memory.
+* [**`Storage`**](#storage-component) : Data read from, and written to the hard disk.
 
 Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java`
-interface and exposes its functionality using the `LogicManager.java` class.<br>
-<img src="images/LogicClassDiagram.png" width="800"><br>
+<br><img src="images/LogicClassDiagram.png" width="800"><br>
 
-The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
-command `delete 3`.
+Example: the `Logic` component (as shown above) defines it's API in the `Logic.java`
+interface and exposes its functionality using the `LogicManager.java` class.<br>
 
 <img src="images\SDforDeleteTask.png" width="800">
+
+The Sequence Diagram above shows how the components interact for the scenario where the user issues the
+command `delete 1`.
 
 >Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data are changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
-being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
-<img src="images\SDforDeleteTaskEventHandling.png" width="800">
+<br><img src="images\SDforDeleteTaskEventHandling.png" width="800">
+
+The diagram above shows how the `EventsCenter` reacts to that event, which eventually results in the updates
+being saved to the hard disk. The status bar of the UI is updated to reflect the 'Last Updated' time. <br>
 
 > Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct 
@@ -91,9 +99,11 @@ being saved to the hard disk and the status bar of the UI being updated to refle
 
 The sections below give more details of each component.
 
-### UI component
+### UI Component
 
 <img src="images/UiClassDiagram.png" width="800"><br>
+
+The picture above gives an overview of how the `UI`component is implemented.<br>
 
 **API** : [`Ui.java`](../src/main/java/seedu/taskell/ui/Ui.java)
 
@@ -111,45 +121,50 @@ The `UI` component,
 * Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
 * Responds to events raised from various parts of the Application and updates the UI accordingly.
 
-### Logic component
+### Logic Component
 
 <img src="images/LogicClassDiagram.png" width="800"><br>
 
+The picture above gives an overview of how the `Logic`component is implemented.<br>
 **API** : [`Logic.java`](../src/main/java/seedu/taskell/logic/Logic.java)
 
-1. `Logic` uses the `Parser` class to parse the user command.
-2. This results in a `Command` object which is executed by the `LogicManager`.
-3. The command execution can affect the `Model` (e.g. adding a task) and/or raise events.
-4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+The `Logic` component,
+* Uses the `Parser` class to parse the user command: results in a `Command` object which is executed by the `LogicManager`.
+* Affects the `Model` (e.g. adding a task) and/or raise events.
+* Executes the necessary command and the result is encapsulated as a  `CommandResult` to be passed back to the `Ui`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
-<img src="images/DeleteTaskSdForLogic.png" width="800"><br>
+<br><img src="images/DeleteTaskSdForLogic.png" width="800"><br>
 
-### Model component
+### Model Component
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 
+
+The picture above gives an overview of how the `Model`component is implemented.<br>
 **API** : [`Model.java`](../src/main/java/seedu/taskell/model/Model.java)
 
-The `Model`,
+The `Model` component,
 * stores a `UserPref` object that represents the user's preferences.
 * stores the Task Manager data.
 * exposes a `UnmodifiableObservableList<ReadOnlyTask>` that can be 'observed' e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-### Storage component
+### Storage Component
 
 <img src="images/StorageClassDiagram.png" width="800"><br>
 
+
+The picture above gives an overview of how the `Storage`component is implemented.<br>
 **API** : [`Storage.java`](../src/main/java/seedu/taskell/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the Address Book data in xml format and read it back.
 
-### Common classes
+### Common Classes
 
 Classes used by multiple components are in the `seedu.taskmanager.commons` package.
 
