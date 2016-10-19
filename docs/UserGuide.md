@@ -7,15 +7,18 @@
 ## Quick Start
 
 Step 1: Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
-  > Having any Java 8 version is not enough. <br> 
+
+  > Having any Java 8 version is not enough. <br>
     This application will not work with earlier versions of Java 8.
 
 Step 2: Download the latest `taskell.jar` from <a href="https://github.com/CS2103AUG2016-W15-C3/main/releases">here</a>.<br>
-	<br> <img src="images/Icon.png" width="100"></br>
+	<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/Icon.png" width="100"></br>
 Step 3: Copy the file to the folder you want to use as the home folder for your Task Manager.<br>
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
- <br><img src="images/GUI.png" width="600"><br>
-Picture 1: A screenshot of the Graphical User Interface (GUI)<br>
+	<p align="center">
+		<img src="images/GUI.png" width="800"><br>
+		<em>Diagram 1: A screenshot of the Graphical User Interface (GUI)</em>
+	</p>
 <br>Step 5:	Type the relevant command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 Step 6: Some example commands you can try:<br>
    * **`list`** : displays all contacts
@@ -27,10 +30,7 @@ Refer to the [Features](#features) section below for details of each command.<br
 
 ## Features
 
-**Command Format**
-> * Words in `UPPER_CASE` are the parameters.
-> * Items in `SQUARE_BRACKETS` are optional.
-> * The parameters have to be in the given order below.
+This section shows the different commands that you can use in Taskell. Words that are in UPPER_CASE are parameters. These parameters have to be in the order stated below. Words that are in italics are used to identify the parameters while words enclosed in SQUARE_BRACKETS are optional. INDEX refers to the index number shown in the most recent listing.
 
 #### Viewing list of commands : `help`
 
