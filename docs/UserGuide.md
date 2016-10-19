@@ -32,7 +32,7 @@ This section shows the different commands that you can use in Taskell. Words tha
 
 #### Viewing list of commands : `help`
 
-Type help and pressing <kbd>Enter</kbd> to open the help window. If you enter an incorrect command, eg. happy, the instruction for using each command will be displayed as well.<br>
+To open the help window<br>
  Format: `help`
  
 #### Adding a task: `add`
