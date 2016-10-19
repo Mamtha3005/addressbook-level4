@@ -42,9 +42,11 @@ Format:
 Example: `add` read Harry Potter Book <br>
 
 To add a deadline task<br>
-> Please refer to Appendix for date and time format that Taskell supports. <br>
+> Please refer to Appendix A for date and time format that Taskell supports. <br>
 
-- `add` TASK ITEM <strong>by</strong> [DATE] <br>
+Formats:
+- `add` TASK by [DATE] <br>
+Example: add buy textbook <i>by</i>  today<br>
 - `add` TASK ITEM <strong>by</strong> [TIME] <br>
 These 2 formats can be used to add events held on a certain day or time.<br>
 > Example: `add` buy MA1101R textbook <strong>by</strong> today <br>
