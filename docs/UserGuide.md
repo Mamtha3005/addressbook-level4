@@ -106,7 +106,7 @@ Format: `undo`
 
 #### Deleting a task : `delete`
 Format: `delete` INDEX<br>
- <br><img src="images/delete1.png" width="600"></br>>
+ <br><img src="images/delete1.png" width="800"></br>>
 Diagram 5 and 6: Entering `delete` 1 will delete "Arrange meeting with XYZ company".<br>
 
 Example: `find` violin, then `delete` 1<br>
