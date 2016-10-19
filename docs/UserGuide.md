@@ -12,11 +12,11 @@ Step 1: Ensure you have Java version `1.8.0_60` or later installed in your Compu
     This application will not work with earlier versions of Java 8.
 
 Step 2: Download the latest `taskell.jar` from <a href="https://github.com/CS2103AUG2016-W15-C3/main/releases">here</a>.<br>
-	<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/Icon.png" width="100"></br>
+	<br> <img src="images/Icon.png" width="100"></br>
 Step 3: Copy the file to the folder you want to use as the home folder for your Task Manager.<br>
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
  <br><img src="images/GUI.png" width="600"><br>
-Diagram 1: A screenshot of the Graphical User Interface (GUI)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Diagram 1: A screenshot of the Graphical User Interface (GUI)<br>
 <br>Step 5:	Type the relevant command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 Step 6: Some example commands you can try:<br>
    * **`list`** : displays all contacts
