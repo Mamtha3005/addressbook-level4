@@ -15,10 +15,8 @@ Step 2: Download the latest `taskell.jar` from <a href="https://github.com/CS210
 	<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/Icon.png" width="100"></br>
 Step 3: Copy the file to the folder you want to use as the home folder for your Task Manager.<br>
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
-	<p align="center">
-		<img src="images/GUI.png" width="500"><br>
-		<em>Diagram 1: A screenshot of the Graphical User Interface (GUI)</em>
-	</p>
+ <br><img src="images/GUI.png" width="600"><br>
+Diagram 1: A screenshot of the Graphical User Interface (GUI)<br>
 <br>Step 5:	Type the relevant command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 Step 6: Some example commands you can try:<br>
    * **`list`** : displays all contacts
@@ -92,7 +90,7 @@ Prints a list of all the tasks due on the specific date.<br>
 - `list` DONE <br>
 Prints a list of all the completed tasks.<br>
 <br><img src="images/ListToday.png" width="600"></br>
-Picture 2: List of tasks due today printed when `list` today is keyed in.
+Diagram 2: List of tasks due today printed when `list` today is keyed in.
    
 #### Finding tasks: `find`
 To view tasks with similar keyword, use the find command.<br>
@@ -106,7 +104,7 @@ Prints list of activities with the same tag.<br>
  <br><img src="images/findReport.png" width="600"></br>
  <br><img src="images/findReportResult.png" width="600"></br>
 
-Picture 3 and 4: Keying in `find` report displays list of tasks with report as one of the keywords in task description
+Diagram 3 and 4: Keying in `find` report displays list of tasks with report as one of the keywords in task description
 
 > Take Note! <br>
 > * The order of the keywords does not matter. e.g. `chicken egg` will match `egg chicken`.
@@ -125,7 +123,7 @@ To delete a task, use the `delete` command. This command deletes the task at a s
 Format: `delete` INDEX<br>
  <br><img src="images/delete1.png" width="600"></br>
  <br><img src="images/delete1Result.png" width="600"></br>
-Picture 5 and 6: Entering `delete` 1 will delete "Arrange meeting with XYZ company".<br>
+Diagram 5 and 6: Entering `delete` 1 will delete "Arrange meeting with XYZ company".<br>
 
 Example: `find` violin, then `delete` 1<br>
 This deletes the 1st task in the results of the find command.
@@ -142,7 +140,7 @@ This adds the 1st task as completed.<br>
 To edit a task, use the `edit` command. This command edits the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
 Format: `edit` INDEX NEWTASK<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
-Picture 7: `edit` 2 schedule meeting on wednesday: edits the 2nd task in Taskell to "schedule meeting on wednesday."
+Diagram 7: `edit` 2 schedule meeting on wednesday: edits the 2nd task in Taskell to "schedule meeting on wednesday."
 
 #### Saving the information in cloud syncing folder
 
