@@ -105,10 +105,8 @@ Format: `undo`
 > You are only allowed to undo the last command.
 
 #### Deleting a task : `delete`
-To delete a task, use the `delete` command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
 Format: `delete` INDEX<br>
- <br><img src="images/delete1.png" width="600"></br>
- <br><img src="images/delete1Result.png" width="600"></br>
+ <br><img src="images/delete1.png" width="600"></br>>
 Diagram 5 and 6: Entering `delete` 1 will delete "Arrange meeting with XYZ company".<br>
 
 Example: `find` violin, then `delete` 1<br>
