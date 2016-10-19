@@ -86,24 +86,18 @@ Displays a list of completed tasks..<br>
 Diagram 2: Displays all the tasks to be done by today after typing list-date.
    
 #### Finding tasks: `find`
-To view tasks with similar keyword, use the find command.<br>
 Formats: <br>
 -`find` KEYWORD [MORE_KEYWORDS]<br>
-Prints a list of activities that match the keywords.<br>
-Example: `find` banana milk essay:<br>
-This returns any task description having keywords banana, milk, essay. <br>
+Displays a list of tasks with description or tag matching the keyword(s)<br>
+Example: find banana milk essay<br>
 -`find-tag` KEYWORD <br>
-Prints list of activities with the same tag.<br>
- <br><img src="images/findReport.png" width="600"></br>
+Displays list of activities with the same tag.<br>
  <br><img src="images/findReportResult.png" width="600"></br>
 
-Diagram 3 and 4: Keying in `find` report displays list of tasks with report as one of the keywords in task description
+Diagram 3: Keying in `find` report `displays a list of tasks with description or tags that contain 'report'`
 
 > Take Note! <br>
-> * The order of the keywords does not matter. e.g. `chicken egg` will match `egg chicken`.
-> * Partial words will be matched e.g. `chicken` will match `chickens`.
-> * Tasks matching at least one keyword will be returned (i.e. `OR` search).
-    e.g. `chicken` will match `chicken duck`
+> The order of the keywords does not matter. e.g. chicken egg will match egg chicken.
 
 #### Reverting previous action : `undo`
 If you wish to undo your previous action, <kbd>Enter</kbd> `undo`.<br>
