@@ -16,7 +16,7 @@ Step 2: Download the latest `taskell.jar` from <a href="https://github.com/CS210
 Step 3: Copy the file to the folder you want to use as the home folder for your Task Manager.<br>
 Step 4: Double-click the file to start the application. The GUI should appear in a few seconds. <br>
 	<p align="center">
-		<img src="images/GUI.png" width="800"><br>
+		<img src="images/GUI.png" width="500"><br>
 		<em>Diagram 1: A screenshot of the Graphical User Interface (GUI)</em>
 	</p>
 <br>Step 5:	Type the relevant command in the command box and press <kbd>Enter</kbd> to execute it.<br>
