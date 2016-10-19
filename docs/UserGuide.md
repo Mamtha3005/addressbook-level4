@@ -49,6 +49,8 @@ Formats:
 Example: add buy textbook <i>by</i> today<br>
 - `add` TASK <i>by</i> [TIME]<br>
 Example: add visit Sandy at her house by the seaside <i>by</i>  3.35pm<br>
+- `add` TASK <i>by</i>  [DATE] <i>by</i>  [TIME]
+Example: `add` do lab homework <i>by</i> Friday <i>by</i> 7pm
 
 These 2 formats can be used to add events held on a certain day or time.<br>
 > Example: `add` buy MA1101R textbook <strong>by</strong> today <br>
