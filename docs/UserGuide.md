@@ -106,25 +106,18 @@ Format: `undo`
 
 #### Deleting a task : `delete`
 Format: `delete` INDEX<br>
- <br><img src="images/delete1.png" width="800"></br>>
-Diagram 5 and 6: Entering `delete` 1 will delete "Arrange meeting with XYZ company".<br>
-
-Example: `find` violin, then `delete` 1<br>
-This deletes the 1st task in the results of the find command.
+ <br><img src="images/delete1.png" width="800"></br>
+Diagram 4: Deletes the first task in the list.<br>
 
 #### Marking a task as completed: `done`
-To mark a task as done, use the `done` command. This command removes the task from uncompleted list and adds to completed tasks.<br>
 Format: `done` INDEX<br>
-
 Example: `done` 1<br>
-This adds the 1st task as completed.<br>
+This adds the 1st task as completed and moves it to the completed list.<br>
 
-#### Editing a task : 
-`edit`
-To edit a task, use the `edit` command. This command edits the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
+#### Editing a task : `edit`
 Format: `edit` INDEX NEWTASK<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
-Diagram 7: `edit` 2 schedule meeting on wednesday: edits the 2nd task in Taskell to "schedule meeting on wednesday."
+Diagram 5: Edits the 2nd task on the list
 
 #### Saving the information in cloud syncing folder
 
