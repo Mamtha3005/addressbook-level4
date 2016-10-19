@@ -99,11 +99,10 @@ Diagram 3: Keying in `find` report `displays a list of tasks with description or
 > Take Note! <br>
 > The order of the keywords does not matter. e.g. chicken egg will match egg chicken.
 
-#### Reverting previous action : `undo`
-If you wish to undo your previous action, <kbd>Enter</kbd> `undo`.<br>
-> Take Note! <br>
-> You are only allowed to undo the last 1 command.
+#### Reverting to your previous action : `undo`
 Format: `undo`
+> Take Note! <br>
+> You are only allowed to undo the last command.
 
 #### Deleting a task : `delete`
 To delete a task, use the `delete` command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
