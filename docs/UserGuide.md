@@ -74,18 +74,16 @@ Example: `add ` concert by 2am band <i>startat</i> 7pm<br>
 - `add ` TASK <i>endat</i>  [TIME]<br>
 Example: `add ` netball training <i>endat</i> 7pm<br>
 
-#### Listing all tasks : `list`
-To view a list of all the tasks, <kbd>Enter</kbd> list.<br>
-<br>
+#### Listing tasks : `list`
 Formats: 
 - `list` <br>
-Prints a list of all the uncompleted tasks.<br>
-- `list` DATE <br> 
-Prints a list of all the tasks due on the specific date.<br>
-- `list` DONE <br>
-Prints a list of all the completed tasks.<br>
+Displays a list of uncompleted tasks.<br>
+- `list-date` DATE <br> 
+Displays a list of all the tasks due on the specific date..<br>
+- `list-done` <br>
+Displays a list of completed tasks..<br>
 <br><img src="images/ListToday.png" width="600"></br>
-Diagram 2: List of tasks due today printed when `list` today is keyed in.
+Diagram 2: Displays all the tasks to be done by today after typing list-date.
    
 #### Finding tasks: `find`
 To view tasks with similar keyword, use the find command.<br>
