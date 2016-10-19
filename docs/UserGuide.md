@@ -45,9 +45,11 @@ To add a deadline task<br>
 > Please refer to Appendix A for date and time format that Taskell supports. <br>
 
 Formats:
-- `add` TASK by [DATE] <br>
-Example: add buy textbook <i>by</i>  today<br>
-- `add` TASK ITEM <strong>by</strong> [TIME] <br>
+- `add` TASK <i>by</i> [DATE] <br>
+Example: add buy textbook <i>by</i> today<br>
+- `add` TASK <i>by</i> [TIME]<br>
+Example: add visit Sandy at her house by the seaside <i>by</i>  3.35pm<br>
+
 These 2 formats can be used to add events held on a certain day or time.<br>
 > Example: `add` buy MA1101R textbook <strong>by</strong> today <br>
 > Example: `add` do CS2100 assignment <strong>by</strong> 10th-August<br>
