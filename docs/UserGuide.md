@@ -36,12 +36,14 @@ To open the help window<br>
  Format: `help`
  
 #### Adding a task: `add`
-To add a new task to Taskell, use the add command.<br>
+To add a floating task<br>
+Format: 
+- `add` TASK <br>
+Example: `add` read Harry Potter Book <br>
 
-Formats: 
-- `add` TASK ITEM <br>
-This format can be used to add floating tasks without any deadlines.<br>
-> Example: `add` read Harry Potter Book <br>
+To add a deadline task<br>
+> Please refer to Appendix for date and time format that Taskell supports. <br>
+
 - `add` TASK ITEM <strong>by</strong> [DATE] <br>
 - `add` TASK ITEM <strong>by</strong> [TIME] <br>
 These 2 formats can be used to add events held on a certain day or time.<br>
