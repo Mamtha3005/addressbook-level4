@@ -49,21 +49,21 @@ Formats:
 Example: add buy textbook <i>by</i> today<br>
 - `add` TASK <i>by</i> [TIME]<br>
 Example: add visit Sandy at her house by the seaside <i>by</i>  3.35pm<br>
-- `add` TASK <i>by</i>  [DATE] <i>by</i>  [TIME]
+- `add` TASK <i>by</i>  [DATE] <i>by</i>  [TIME] <br>
 Example: `add` do lab homework <i>by</i> Friday <i>by</i> 7pm
 
-These 2 formats can be used to add events held on a certain day or time.<br>
-> Example: `add` buy MA1101R textbook <strong>by</strong> today <br>
-> Example: `add` do CS2100 assignment <strong>by</strong> 10th-August<br>
-> Example: `add` go shopping <strong>by</strong> 3pm<br>
-- `add `TASK ITEM <strong>by</strong> [DATE][TIME] <br>
-This format can be used to add tasks with a stipulated deadline.<br>
-> Example: `add` do lab homework <strong>by</strong> Friday.7pm <br>
--  `add` TASK ITEM <strong>on</strong> [DATE] <br>
-The use of word <strong>"on"</strong> gives more flexibility for you.<br>
-> Example: `add` schedule meeting <strong>on</strong> Thursday <br>
-- `add` TASK ITEM <strong>on</strong> [DATE][TIME] <br>
-> Example: `add` meet teacher <strong>on</strong> 28-09-16 7pm <br>
+To have a greater flexibility in the command format, Taskell supports a few natural variation such as <i>on</i> and <i>at</i>.<br>
+
+
+- `add ` TASK <i>on</i> [DATE]
+Example: `add ` go for meeting <i>on</i> monday
+- `add ` TASK <i>at</i> [TIME]
+Example: `add ` go for meeting <i>at</i> 3pm
+- `add ` TASK <i>on</i> [DATE] <i>at</i> [TIME]
+Example: `add ` go for meeting <i>on</i> Sunday <i>at</i> 3pm
+- `add ` TASK <i>on</i> [DATE] <i>by</i>[TIME]
+Example: `add ` go for meeting <i>on</i> 1-jan <i>by</i> 3pm
+
 
 Supported Date Format |   Example  
 -------- | :-------- 
