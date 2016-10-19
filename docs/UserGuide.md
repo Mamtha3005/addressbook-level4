@@ -7,9 +7,8 @@
 ## Quick Start
 
 Step 1: Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >
-   Having any Java 8 version is not enough. <br> 
-   This application will not work with earlier versions of Java 8.
+  > Having any Java 8 version is not enough. <br> 
+    This application will not work with earlier versions of Java 8.
 
 Step 2: Download the latest `taskell.jar` from <a href="https://github.com/CS2103AUG2016-W15-C3/main/releases">here</a>.<br>
 	<br> <img src="images/Icon.png" width="100"></br>
