@@ -82,7 +82,7 @@ Displays a list of uncompleted tasks.<br>
 Displays a list of all the tasks due on the specific date..<br>
 - `list-done` <br>
 Displays a list of completed tasks.<br>
-<img src="images/ListToday.png" width="600"></br>
+<br><img src="images/ListToday.png" width="600"></br>
 Diagram 2: Displays all the tasks to be done by today after typing list-date.
    
 #### Finding tasks: `find`
