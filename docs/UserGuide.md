@@ -54,38 +54,25 @@ Example: `add` do lab homework <i>by</i> Friday <i>by</i> 7pm
 
 To have a greater flexibility in the command format, Taskell supports a few natural variation such as <i>on</i> and <i>at</i>.<br>
 
+- `add ` TASK <i>on</i> [DATE]<br>
+Example: `add ` go for meeting <i>on</i> monday <br>
+- `add ` TASK <i>at</i> [TIME] <br>
+Example: `add ` go for meeting <i>at</i> 3pm <br>
+- `add ` TASK <i>on</i> [DATE] <i>at</i> [TIME] <br>
+Example: `add ` go for meeting <i>on</i> Sunday <i>at</i> 3pm <br>
+- `add ` TASK <i>on</i> [DATE] <i>by</i>[TIME] <br>
+Example: `add ` go for meeting <i>on</i> 1-jan <i>by</i> 3pm <br>
 
-- `add ` TASK <i>on</i> [DATE]
-Example: `add ` go for meeting <i>on</i> monday
-- `add ` TASK <i>at</i> [TIME]
-Example: `add ` go for meeting <i>at</i> 3pm
-- `add ` TASK <i>on</i> [DATE] <i>at</i> [TIME]
-Example: `add ` go for meeting <i>on</i> Sunday <i>at</i> 3pm
-- `add ` TASK <i>on</i> [DATE] <i>by</i>[TIME]
-Example: `add ` go for meeting <i>on</i> 1-jan <i>by</i> 3pm
+To add an event task<br>
+Formats:
+- `add ` TASK <i>on</i> [DATE] <i>startat</i> [TIME] <i>endat</i> [TIME]<br>
+Example: `add ` schedule meeting <i>on</i> Thursday <i>startat</i> 1pm <i>endat</i> 9pm<br>
 
+- `add ` TASK <i>startat</i>  [TIME]<br>
+Example: `add ` concert by 2am band <i>startat</i> 7pm<br>
 
-Supported Date Format |   Example  
--------- | :-------- 
-DD-MM-YY |1-1-16 
-DD-MM-YY  | 1-1-2016 
-DD-MM-YY  | 1-Jan-2016
-DD-MM-YY  | 1-January-2016  
-DD-MM-YY  | 1.Jan.2016
-DD-MM-YY  | 1.January.2016  
-MM-YY  | july-16
-MM  | july
-day  | today
-day  | tdy
-day  | tmr
-day  | tomorrow
-day  | thursday
-
-Supported Time Format |   Example  
--------- | :-------- 
-12hour |1pm
-12hour |12am
-12hour |111.45pm
+- `add ` TASK <i>endat</i>  [TIME]<br>
+Example: `add ` netball training <i>endat</i> 7pm<br>
 
 #### Listing all tasks : `list`
 To view a list of all the tasks, <kbd>Enter</kbd> list.<br>
@@ -193,3 +180,25 @@ List Given Day | `list` [DATE]
 List Tasks Done | `list` [DONE]
 Help | `help`
 Undo | `undo`
+
+Supported Date Format |   Example  
+-------- | :-------- 
+DD-MM-YY |1-1-16 
+DD-MM-YY  | 1-1-2016 
+DD-MM-YY  | 1-Jan-2016
+DD-MM-YY  | 1-January-2016  
+DD-MM-YY  | 1.Jan.2016
+DD-MM-YY  | 1.January.2016  
+MM-YY  | july-16
+MM  | july
+day  | today
+day  | tdy
+day  | tmr
+day  | tomorrow
+day  | thursday
+
+Supported Time Format |   Example  
+-------- | :-------- 
+12hour |1pm
+12hour |12am
+12hour |111.45pm
