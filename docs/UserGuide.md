@@ -3,7 +3,9 @@
 * [Features](#features)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
-
+* [Appendix A](#appendix-a)
+* [Appendix B](#appendix-b)
+ 
 ## Quick Start
 
 Step 1: Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
@@ -42,7 +44,7 @@ Format:
 Example: `add` read Harry Potter Book <br>
 
 To add a deadline task<br>
-> Please refer to Appendix A for date and time format that Taskell supports. <br>
+> Please refer to Appendix A and B for date and time format respectively that Taskell supports. <br>
 
 Formats:
 - `add` TASK <i>by</i> [DATE] <br>
@@ -119,25 +121,16 @@ Format: `edit` INDEX NEWTASK<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
 Diagram 5: Edits the 2nd task on the list
 
-#### Saving the information in cloud syncing folder
+#### Saving Taskell Data in a Different Folder
 
-Specify the path of a folder to store the data file of Taskell. The user should have permissions to access the folder.<br>
 Format: `save` /FOLDERPATH<br>
-Example: `save` f/Dropbox
+Example: `save` /Jim/Dropbox <br>
 
-#### Clearing all entries : 
-`clear`
-To clear all tasks, <kbd>Enter</kbd> `clear`.<br>
-Format: `clear`  
+#### Clearing all entries :  `clear`
+Format: `clear`  <br>
 
-#### Exiting the program : 
-`exit`
-To close Taskell, <kbd>Enter</kbd> exit.<br>
+#### Exiting the program : `exit`
 Format: `exit`  
-
->  Done already? So where are all these information saved? No need to worry, Taskell will 
->  have them saved it for you!
-<br>
 
 ## FAQ
 
@@ -163,6 +156,8 @@ List Tasks Done | `list` [DONE]
 Help | `help`
 Undo | `undo`
 
+## Appendix A
+
 Supported Date Format |   Example  
 -------- | :-------- 
 DD-MM-YY |1-1-16 
@@ -178,6 +173,8 @@ day  | tdy
 day  | tmr
 day  | tomorrow
 day  | thursday
+
+## Appendix B
 
 Supported Time Format |   Example  
 -------- | :-------- 
