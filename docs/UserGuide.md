@@ -144,10 +144,15 @@ This adds the 1st task as completed and moves it to the completed list.<br>
 #### Editing a task : `edit`
 Format: `edit` INDEX NEWTASK<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
-Diagram 5: Edits the 2nd task on the list
+Diagram 5: Edits the 2nd task on the list<br>
 
 <!--- @@author A0142130A ---> 
 
+#### Showing calendar view : `calendar` or `cal`<br>
+ You can view the calendar for the week on right panel to refer to the dates when adding tasks and scheduling events.<br>
+ To save time, Taskell has a short form command `cal`. <br>
+ Format: `calendar`<br>
+ 
 #### Saving the information in Taskell : `save`
 
 You can specify the path of a folder to store Taskell's data file. Please note that you should have permissions to access the folder. <br>
@@ -177,6 +182,7 @@ Add Floating Task | `add` TASK ITEM
 Add Event | `add` TASK ITEM <strong>by</strong> [DATE]
 Add Event | `add` TASK ITEM <strong>by</strong> [TIME]
 Add Event With Deadline | `add` TASK ITEM <strong>by</strong> [DATE][TIME]
+Calendar View | `calendar` or `cal`
 Clear | `clear`
 Delete | `delete` INDEX
 Edit | `edit` INDEX NEWTASK
