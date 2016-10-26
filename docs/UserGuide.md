@@ -93,23 +93,43 @@ Displays a list of completed tasks.<br>
 <br><img src="images/ListToday.png" width="600"></br>
 Diagram 2: Displays all the tasks to be done by today after typing list-date.
    
-#### Finding tasks: `find`
-Formats: <br>
--`find` KEYWORD [MORE_KEYWORDS]<br>
-Displays a list of tasks with description or tag matching the keyword(s)<br>
-Example: find banana milk essay<br>
--`find-tag` KEYWORD <br>
-Displays list of activities with the same tag.<br>
- <br><img src="images/findReportResult.png" width="600"></br>
+<!--- @@author A0142130A --->  
 
-Diagram 3: Keying in `find` report `displays a list of tasks with description or tags that contain 'report'`
+#### Finding tasks: `find`
+You can use the find command to view tasks with specific keywords.<br>
+Formats: <br>
+-`find KEYWORD [MORE_KEYWORDS]`<br>
+Displays a list of tasks with description or tags that match all the keywords.<br>
+Example: `find banana milk essay`<br>
+This returns all tasks with description or tags that match all keywords `banana`, `milk`, and `essay`. <br>
+
+-`find-tag TAG [MORE_TAGS]`<br>
+Displays list of tasks with the same tags.<br>
+Example: `find homework essay cs2103`<br>
+This returns any task with either tag `homework`, `essay`, or `cs2103`.<br>
+ <br><img src="images/findReport.png" width="600"></br>
+ <br><img src="images/findReportResult.png" width="600"></br>
+ 
+ <!--- @@author ---> 
+
+Diagram 3 and 4: Keying in “find report” displays list of tasks with report as one of the keywords in task description
 
 > Take Note! <br>
-> The order of the keywords does not matter. e.g. chicken egg will match egg chicken.
+> * The order of the keywords does not matter. e.g. `chicken egg` will match `egg chicken`.
+> * Full words will be matched e.g. `chicken` will match `chickens`.
+> * Tasks matching at least one keyword will be returned (i.e. `OR` search).
+    e.g. `chicken` will match `chicken duck`
 
-#### Reverting to your previous action : `undo`
+<!--- @@author A0142130A ---> 
+
+#### Reverting previous action : `undo`
+If you wish to undo your previous actions, <kbd>Enter</kbd> list-undo to see a list of 
+previous commands that can be undone.<br>
+Then use undo command at the specified INDEX in the list.<br>
 Format: `undo INDEX`<br> 
 Example: `list-undo`, then `undo 3`, will undo third command in command history.
+
+<!--- @@author ---> 
 
 #### Deleting a task : `delete`
 Format: `delete` INDEX<br>
@@ -126,10 +146,17 @@ Format: `edit` INDEX NEWTASK<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
 Diagram 5: Edits the 2nd task on the list
 
-#### Saving Taskell Data in a Different Folder : `save` 
+<!--- @@author A0142130A ---> 
 
+#### Saving the information in Taskell : `save`
+
+You can specify the path of a folder to store Taskell's data file. Please note that you should have permissions to access the folder. <br>
+If the specified directory is valid but the file is missing, for example if command is `save C:/Users/Jim/Documents/chicken`,  and `C:/Users/Jim/Documents/chicken` is valid
+but `chicken` file is not created, Taskell will create the file for you.<br>
 Format: `save FOLDERPATH`<br>
 Example: `save C:/Users/Jim/Documents`
+
+<!--- @@author ---> 
 
 #### Clearing all entries :  `clear`
 Format: `clear`  <br>
@@ -159,7 +186,8 @@ Help | `help`
 List | `list`
 List Given Day | `list-date` [DATE]
 List Tasks Done | `list-done` [DONE]
-Undo | `undo`
+List Undo | `list-undo`
+Undo | `undo INDEX`
 
 ## Appendix A
 
