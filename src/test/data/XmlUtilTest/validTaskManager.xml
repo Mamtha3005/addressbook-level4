@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<taskmanager>
+    <tasks>
+        <description>Hans Muster</description>
+        <taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>        
+    </tasks>
+    <tasks>
+        <description>Ruth Mueller</description>
+        <taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Heinz Kurz</description>
+        <taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Cornelia Meier</description>
+        <taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Werner Meyer</description>
+		<taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Lydia Kunz</description>
+		<taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Anna Best</description>
+		<taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Stefan Meier</description>
+		<taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+    <tasks>
+        <description>Martin Mueller</description>
+		<taskType>EVENT</taskType>
+        <startDate isPrivate="false">1-1-2100</startDate>
+        <endDate isPrivate="false">1-12-2100</endDate>
+        <startTime isPrivate="false">12:30AM</startTime>
+        <endTime isPrivate="false">12:45AM</endTime>
+        <taskPriority isPrivate="false">0</taskPriority>
+        <recurringType isPrivate="false">neverRecur</recurringType>
+        <taskComplete isPrivate="false">incomplete</taskComplete>
+    </tasks>
+</taskmanager>

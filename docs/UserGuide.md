@@ -7,11 +7,15 @@
 * [Appendix A](#appendix-a)
 * [Appendix B](#appendix-b)
 
+<!--- @@author A0142073R ---> 
+
 ## Introduction
 Are you having a hard time remembering all the work you have to do? Do you have trouble finding a task manager that suits your preference for keyboard input? Well, worry no more, Taskell is here for you! <br>
 Taskell will be your personal secretary. It will keep track of your daily tasks and remind you of any important dates and deadlines. What distinguishes Taskell from other task managers is that Taskell only requires a single line of command for every task input. This means that you can record each one of your tasks with just a single statement. You will no longer have to use a mouse if you do not wish to. <br>
-Ready to begin life anew with a more efficient task manager? Read on to find out more!
- 
+Ready to begin life anew with a more efficient task manager? Read on to find out more! 
+
+<!--- @@author --> 
+
 ## Quick Start
 
 Step 1: Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
@@ -43,6 +47,8 @@ This section shows the different commands that you can use in Taskell. Words tha
 To open the help window<br>
  Format: `help`
  
+<!--- @@author A0139257X --->
+
 #### Adding a task: `add`
 To add a floating task<br>
 Format: 
@@ -82,16 +88,26 @@ Example: `add ` concert by 2am band <i>startat</i> 7pm<br>
 - `add ` TASK <i>endat</i>  [TIME]<br>
 Example: `add ` netball training <i>endat</i> 7pm<br>
 
+<!--- @@author -->
+
+<!--- @@author A0148004Rz --->
+
 #### Listing tasks : `list`
 Formats: 
 - `list` <br>
 Displays a list of uncompleted tasks.<br>
+- `list-all` <br>
+Displays a list of all tasks.<br>
 - `list-date` DATE <br> 
-Displays a list of all the tasks due on the specific date..<br>
+Displays a list of all the tasks due on the specific date.<br>
 - `list-done` <br>
 Displays a list of completed tasks.<br>
+- `list-priority` PRIORITY<br>
+Displays a list of tasks with given priority.<br>
 <br><img src="images/ListToday.png" width="600"></br>
 Diagram 2: Displays all the tasks to be done by today after typing list-date.
+
+<!-- @@author -->
    
 <!--- @@author A0142130A --->  
 
@@ -112,7 +128,7 @@ This returns any task with either tag `homework`, `essay`, or `cs2103`.<br>
  
  <!--- @@author ---> 
 
-Diagram 3 and 4: Keying in “find report” displays list of tasks with report as one of the keywords in task description
+Diagrams 3 and 4: Keying in `find report` displays list of tasks with report as one of the keywords in task description
 
 > Take Note! <br>
 > * The order of the keywords does not matter. e.g. `chicken egg` will match `egg chicken`.
@@ -122,39 +138,74 @@ Diagram 3 and 4: Keying in “find report” displays list of tasks with report as o
 
 <!--- @@author A0142130A ---> 
 
+#### Showing history : `history` or `hist`
+You can view the command history available for undo on the right panel to refer to when undoing previous commands.<br>
+To save your time, Taskell has a short form command `hist`. <br>
+Format: `history`<br>
+
+> Take Note! <br>
+> * Only commands available for undo are shown here. 
+> * Refer to undo section for more information about what commands undo supports.
+
 #### Reverting previous action : `undo`
-If you wish to undo your previous actions, <kbd>Enter</kbd> list-undo to see a list of 
+If you wish to undo your most recent action, you can do so by using the undo command.<br>
+You can also undo previous commands, <kbd>Enter</kbd> `hist` to see a list of 
 previous commands that can be undone.<br>
-Then use undo command at the specified INDEX in the list.<br>
-Format: `undo INDEX`<br> 
-Example: `list-undo`, then `undo 3`, will undo third command in command history.
+Then use undo command with specified INDEX from the list of command history.<br>
+Formats: <br>
+-`undo`<br> 
+Undo most recent command executed.<br>
+-`undo INDEX`<br> 
+Undo by index of command history.<br>
+Example: `hist`, then `undo 3`, will undo third command in command history.<br>
+
+> Take Note! <br>
+> * Undo command only supports add, edit, delete, and undo commands.
+> * Clear commands are irreversible!
 
 <!--- @@author ---> 
 
 #### Deleting a task : `delete`
+To delete a task, use the delete command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
+Format: `delete INDEX`<br>
+ <br><img src="images/delete1.png" width="600"></br>
+Diagrams 5 and 6: Entering `delete 1 will delete "Arrange meeting with XYZ company".`<br>
+
+Example: `find violin, then delete 1<br>
+This deletes the 1st task in the results of the find command.
+
 Format: `delete` INDEX<br>
  <br><img src="images/delete1.png" width="800"></br>
 Diagram 4: Deletes the first task in the list.<br>
+
+<!--- @@author A0148004Rz --->
 
 #### Marking a task as completed: `done`
 Format: `done` INDEX<br>
 Example: `done` 1<br>
 This adds the 1st task as completed and moves it to the completed list.<br>
 
+<!--- @@author --->
+
+<!--- @@author A0142073R --->
+
 #### Editing a task : `edit`
-Format: `edit` INDEX NEWTASK<br>
+To edit a task<br>
+Formats: 
+- `edit ` INDEX `st: `[NEWSTARTTIME] `et: `[NEWENDTIME] `desc: `[NEWDESCRIPTION] `sd: `[NEWSTARTDATE] `ed: `[NEWENDDATE] `p: `[NEWPRIORITY]<br>
  <br> <img src="images/editCmd.png" width="600"> </br>
-Diagram 5: Edits the 2nd task on the list<br>
+Diagram 5: Edits the 1st task on the list. Entering "edit 1 desc: send all emails sd: 11-11-2016 ed: 12-11-2016 st: 3pm et: 4pm p: 3" updates description to "send all emails", start date to 11-11-2016, end date to 12-11-2016, start time to 3pm end time to 4pm and priority to 3.<br>
+
+<!--- @@author --->
 
 <!--- @@author A0142130A ---> 
 
-#### Showing calendar view : `calendar` or `cal`<br>
- You can view the calendar for the week on right panel to refer to the dates when adding tasks and scheduling events.<br>
- To save time, Taskell has a short form command `cal`. <br>
- Format: `calendar`<br>
- 
-#### Saving the information in Taskell : `save`
+#### Showing calendar view : `calendar` or `cal`
+You can view the calendar for the week on the right panel to refer to the dates when adding tasks and scheduling events.<br>
+To save your time, Taskell has a short form command `cal`. <br>
+Format: `calendar`<br>
 
+#### Saving the information in Taskell : `save`
 You can specify the path of a folder to store Taskell's data file. Please note that you should have permissions to access the folder. <br>
 If the specified directory is valid but the file is missing, for example if command is `save C:/Users/Jim/Documents/chicken`,  and `C:/Users/Jim/Documents/chicken` is valid
 but `chicken` file is not created, Taskell will create the file for you.<br>
@@ -173,7 +224,9 @@ Format: `exit`
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Taskell folder.
-       
+
+<!--- @@author A0142073R ---> 
+     
 ## Command Summary
 
 Command | Format  
@@ -184,15 +237,17 @@ Add Event | `add` TASK ITEM <strong>by</strong> [TIME]
 Add Event With Deadline | `add` TASK ITEM <strong>by</strong> [DATE][TIME]
 Calendar View | `calendar` or `cal`
 Clear | `clear`
+Complete | `done` INDEX
 Delete | `delete` INDEX
 Edit | `edit` INDEX NEWTASK
 Find | `find` KEYWORD [MORE_KEYWORDS]
 Find Tag | `find-tag` KEYWORD [MORE_KEYWORDS]
 Help | `help`
-List | `list`
+History | `history` or `hist`
+List Incomplete Tasks| `list`
+List All Tasks | `list-all`
 List Given Day | `list-date` [DATE]
 List Tasks Done | `list-done` [DONE]
-List Undo | `list-undo`
 Undo | `undo INDEX`
 
 ## Appendix A
@@ -219,4 +274,6 @@ Supported Time Format |   Example
 -------- | :-------- 
 12hour |1pm
 12hour |12am
-12hour |111.45pm
+12hour |11.45pm
+
+<!-- @@author -->
