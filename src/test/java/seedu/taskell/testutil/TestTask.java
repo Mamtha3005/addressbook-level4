@@ -103,7 +103,7 @@ public class TestTask implements ReadOnlyTask {
 
     @Override
     public TaskDate getEndDate() {
-        return startDate;
+        return endDate;
     }
 
     @Override
