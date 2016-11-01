@@ -93,14 +93,7 @@ public class Parser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         
-        if (commandWord.equals(AddCommand.COMMAND_WORD) 
-                || commandWord.equals(DeleteCommand.COMMAND_WORD)
-                || commandWord.contains(UndoCommand.EDIT)) {
-            IncorrectCommand.setIsUndoableCommand(true);
-            history.addCommand(userInput, commandWord);
-        } else {
-            IncorrectCommand.setIsUndoableCommand(false);
-        }
+        saveToHistory(userInput, commandWord);
 
         switch (commandWord) {
 
@@ -175,7 +168,25 @@ public class Parser {
         }
     }
 
+    /** @@author A0142130A **/
+    
+    /** if type of command is undoable, saves to history for undoing
+     * */
+    private void saveToHistory(String userInput, final String commandWord) {
+        if (commandWord.equals(AddCommand.COMMAND_WORD) 
+                || commandWord.equals(DeleteCommand.COMMAND_WORD)
+                || commandWord.contains(UndoCommand.EDIT)) {
+            IncorrectCommand.setIsUndoableCommand(true);
+            history.addCommand(userInput, commandWord);
+        } else {
+            IncorrectCommand.setIsUndoableCommand(false);
+        }
+    }
+    
+    /** @@author **/
+
     // @@author A0142073R
+
     private Command prepareListDate(String arguments) {
         if (arguments.isEmpty()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListDateCommand.MESSAGE_USAGE));
