@@ -78,8 +78,6 @@ public class LogicManagerTest {
         latestSavedTaskManager = new TaskManager(model.getTaskManager()); // last saved assumed to be up to startDate before.
         helpShown = false;
         targetedJumpIndex = -1; // non yet
-        
-        ClearCommand.setIsUnderTesting(true);
     }
 
     @After
