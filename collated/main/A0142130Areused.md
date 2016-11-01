@@ -29,3 +29,31 @@ public interface ConfigStorage {
     void saveConfigFile(Config config) throws IOException;
 }
 ```
+###### \java\seedu\taskell\ui\UiManager.java
+``` java
+    
+    Alert showAlertDialogAndWaitForConfirm(Alert.AlertType type, String title, String headerText, 
+            String contentText) {
+        return showAlertDialogAndWaitForConfirm(mainWindow.getPrimaryStage(), type, title, 
+                headerText, contentText);
+    }
+    
+```
+###### \java\seedu\taskell\ui\UiManager.java
+``` java
+    
+    private static Alert showAlertDialogAndWaitForConfirm(Stage owner, AlertType type, 
+            String title, String headerText, String contentText) {
+        final Alert alert = new Alert(type);
+        alert.getDialogPane().getStylesheets().add("view/TaskellCyanTheme.css");
+        alert.initOwner(owner);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+        
+        return alert;
+    }
+    
+```
