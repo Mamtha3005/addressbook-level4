@@ -20,7 +20,8 @@ import seedu.taskell.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Edits a task identified using it's last displayed index from the task
- * manager.
+ * manager. Supports to edit different parameters of a task including description,
+ * time, date and priority of a task.
  */
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
@@ -56,22 +57,30 @@ public class EditCommand extends Command {
             TaskDate newStartDate, boolean hasChangedStartDate, TaskDate newEndDate, boolean hasChangedEndDate,
             TaskTime newStartTime, boolean hasChangedStartTime, TaskTime newEndTime, boolean hasChangedEndTime,
             TaskPriority newPriority, boolean hasChangedPriority) throws IllegalValueException {
+        
         this.targetIndex = targetIndex;
+        
         description = newDescription;
         this.hasChangedDescription = hasChangedDescription;
+        
         startTime = newStartTime;
         this.hasChangedStartTime = hasChangedStartTime;
+        
         endTime = newEndTime;
         this.hasChangedEndTime = hasChangedEndTime;
+        
         startDate = newStartDate;
         this.hasChangedStartDate = hasChangedStartDate;
+        
         endDate = newEndDate;
         this.hasChangedEndDate = hasChangedEndDate;
+        
         taskPriority = newPriority;
         this.hasChangedPriority = hasChangedPriority;
     }
 
     public void getEditInformation(ReadOnlyTask taskToEdit) {
+        
         if (hasChangedDescription == false) {
             description = taskToEdit.getDescription();
         }

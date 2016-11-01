@@ -56,7 +56,7 @@ public class Parser {
     private static final String AT = "at";
     private static final String FROM = "from";
     private static final String TO = "to";
-    
+
     private static final String ST = "st:";
     private static final String ET = "et:";
     private static final String SD = "sd:";
@@ -92,7 +92,7 @@ public class Parser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        
+
         saveToHistory(userInput, commandWord);
 
         switch (commandWord) {
@@ -147,13 +147,13 @@ public class Parser {
 
         case DoneCommand.COMMAND_WORD:
             return prepareDone(arguments);
-        
+
         case UndoneCommand.COMMAND_WORD:
             return prepareUndone(arguments);
-        
+
         case ViewHistoryCommand.COMMAND_WORD_1:
             return new ViewHistoryCommand();
-            
+
         case ViewHistoryCommand.COMMAND_WORD_2:
             return new ViewHistoryCommand();
 
@@ -169,12 +169,12 @@ public class Parser {
     }
 
     /** @@author A0142130A **/
-    
-    /** if type of command is undoable, saves to history for undoing
-     * */
+
+    /**
+     * if type of command is undoable, saves to history for undoing
+     */
     private void saveToHistory(String userInput, final String commandWord) {
-        if (commandWord.equals(AddCommand.COMMAND_WORD) 
-                || commandWord.equals(DeleteCommand.COMMAND_WORD)
+        if (commandWord.equals(AddCommand.COMMAND_WORD) || commandWord.equals(DeleteCommand.COMMAND_WORD)
                 || commandWord.contains(UndoCommand.EDIT)) {
             IncorrectCommand.setIsUndoableCommand(true);
             history.addCommand(userInput, commandWord);
@@ -182,31 +182,39 @@ public class Parser {
             IncorrectCommand.setIsUndoableCommand(false);
         }
     }
-    
+
     /** @@author **/
 
     // @@author A0142073R
 
     private Command prepareListDate(String arguments) {
+
         if (arguments.isEmpty()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListDateCommand.MESSAGE_USAGE));
         }
+
         StringTokenizer st = new StringTokenizer(arguments.trim(), " ");
         String date = st.nextToken();
+
+        if (st.hasMoreTokens()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListDateCommand.MESSAGE_USAGE));
+        }
         if (!TaskDate.isValidDate(date)) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListDateCommand.MESSAGE_USAGE));
         }
-
         return new ListDateCommand(date);
     }
 
     private Command prepareListPriority(String args) {
+
         if (args.isEmpty()) {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListPriorityCommand.MESSAGE_USAGE));
         }
+
         StringTokenizer st = new StringTokenizer(args.trim(), " ");
         String intValue = st.nextToken();
+        
         if (st.hasMoreTokens()) {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListPriorityCommand.MESSAGE_USAGE));
@@ -215,12 +223,14 @@ public class Parser {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListPriorityCommand.MESSAGE_USAGE));
         }
+        
         int targetIdx = Integer.valueOf(intValue);
-        if (targetIdx < 0 || targetIdx > 3) {
+        if (targetIdx < Integer.valueOf(TaskPriority.DEFAULT_PRIORITY) || targetIdx > Integer.valueOf(TaskPriority.HIGH_PRIORITY)) {
             return new IncorrectCommand(
-                    String.format(MESSAGE_INVALID_TASK_DISPLAYED_INDEX, ListPriorityCommand.MESSAGE_USAGE));
+                    String.format(TaskPriority.MESSAGE_TASK_PRIORITY_CONSTRAINTS, ListPriorityCommand.MESSAGE_USAGE));
         } else
             return new ListPriorityCommand(intValue);
+        
     }
 
     /**
@@ -237,17 +247,18 @@ public class Parser {
         String startTime = TaskTime.DEFAULT_START_TIME;
         String endTime = TaskTime.DEFAULT_END_TIME;
         String taskPriority = TaskPriority.DEFAULT_PRIORITY;
-        
 
         if (args.isEmpty()) {
             // UndoCommand.deletePreviousCommand();
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
+        
         StringTokenizer st = new StringTokenizer(args.trim(), " ");
         String intValue = st.nextToken();
         if (!isInt(intValue)) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_TASK_DISPLAYED_INDEX, EditCommand.MESSAGE_USAGE));
         }
+        
         int targetIdx = Integer.valueOf(intValue);
         hasChangedDescription = false;
         hasChangedStartDate = false;
@@ -256,6 +267,7 @@ public class Parser {
         hasChangedEndTime = false;
         hasChangedPriority = false;
         boolean lastChar = false;
+        
         if (!st.hasMoreTokens()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
@@ -391,12 +403,13 @@ public class Parser {
                 }
                 // System.out.println("Priority is " + taskPriority);
             }
-            if (!(parts.equals(DESC) || parts.equals(ST) || parts.equals(ET) || parts.equals(SD)
-                    || parts.equals(ED) || parts.equals(P)) && lastChar == false) {
+            if (!(parts.equals(DESC) || parts.equals(ST) || parts.equals(ET) || parts.equals(SD) || parts.equals(ED)
+                    || parts.equals(P)) && lastChar == false) {
                 // System.out.println("I am here as incrct because of parts
                 // "+parts);
                 return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
             }
+            
         }
         // System.out
         // .println("Desc: " + hasChangedDescription + " st: " +
@@ -412,6 +425,7 @@ public class Parser {
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
+        
     }
 
     // @@author
@@ -524,7 +538,7 @@ public class Parser {
                     priorityCount++;
                 }
                 continue;
-            } else if(token.startsWith(RecurringType.PREFIX)){
+            } else if (token.startsWith(RecurringType.PREFIX)) {
                 tempToken = flushQueue(byQueue, onQueue, atQueue, fromQueue, toQueue);
                 if (!tempToken.isEmpty()) {
                     descriptionQueue.offer(tempToken);
@@ -533,12 +547,12 @@ public class Parser {
                     return new IncorrectCommand(
                             String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
                 } else {
-                    
+
                     recurringType = token.substring(token.indexOf(RecurringType.PREFIX) + 2);
                     hasRecurring = true;
                     recurrenceCount++;
                 }
-                
+
             } else if (TaskDate.isValidDate(token)) {
                 if (byQueue.isEmpty() && onQueue.isEmpty() && atQueue.isEmpty() && fromQueue.isEmpty()
                         && toQueue.isEmpty()) {
@@ -658,13 +672,13 @@ public class Parser {
             }
         } else {
 
-            if(hasRecurring){
+            if (hasRecurring) {
                 return new IncorrectCommand(FloatingTask.RECURRING_TYPE_NOT_ALLOWED);
-            }else{
+            } else {
                 try {
                     return new AddCommand(description, Task.FLOATING_TASK, startDate, endDate, startTime, endTime,
                             taskPriority, recurringType, getTagsFromArgs(tagString));
-                } catch (IllegalValueException ive) {                    
+                } catch (IllegalValueException ive) {
                     return new IncorrectCommand(ive.getMessage());
                 }
             }
@@ -804,11 +818,11 @@ public class Parser {
         if (args.isEmpty()) {
             return new UndoCommand();
         }
-        
+
         Optional<Integer> index = parseIndex(args);
         if (!index.isPresent()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoCommand.MESSAGE_USAGE));
-        } 
+        }
         return new UndoCommand(index.get());
     }
 
@@ -864,7 +878,7 @@ public class Parser {
 
         return new DoneCommand(index.get());
     }
-   
+
     /**
      * Parses arguments in the context of the Undone task command.
      *
@@ -876,13 +890,13 @@ public class Parser {
         Optional<Integer> index = parseIndex(args);
         if (!index.isPresent()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoneCommand.MESSAGE_USAGE));
-        } 
-        
+        }
+
         return new UndoneCommand(index.get());
     }
-    //@@author
-    
-    //@@author A0142073R
+    // @@author
+
+    // @@author A0142073R
     private static boolean isInt(String s) {
         try {
             int i = Integer.parseInt(s);

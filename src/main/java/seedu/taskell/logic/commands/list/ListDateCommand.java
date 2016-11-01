@@ -1,4 +1,5 @@
 //@@author A0142073R
+
 package seedu.taskell.logic.commands.list;
 
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class ListDateCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Listed all tasks on a given date";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Lists tasks on a specific date.\n"
+            + ": Lists tasks on 1 specific date only.\n"
             + "Parameters: DATE (must be a positive integer)\n" + "Example: " + COMMAND_WORD + " 8-8-2016 ";
 
     private Set<String> keywordSet;
