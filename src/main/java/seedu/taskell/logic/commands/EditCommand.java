@@ -9,6 +9,7 @@ import seedu.taskell.logic.commands.Command;
 import seedu.taskell.logic.commands.CommandResult;
 import seedu.taskell.logic.commands.UndoCommand;
 import seedu.taskell.model.task.Description;
+import seedu.taskell.model.task.FloatingTask;
 import seedu.taskell.model.task.ReadOnlyTask;
 import seedu.taskell.model.task.Task;
 import seedu.taskell.model.task.TaskDate;
@@ -32,10 +33,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Original Task: %1$s \n\nUpdated Task: %2$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task manager";
     public static final String TASK_NOT_FOUND = "The target task is missing";
-    public static final String MESSAGE_TIME_CONSTRAINTS = "Start time must be before end time"
-            + "\nTime should not be before current time";
-    public static final String MESSAGE_DATE_CONSTRAINTS = "Start date must be before end date"
-            + "\nAll date should not be before current date";
+    public static final String MESSAGE_TIME_CONSTRAINTS = "Start time must be before end time";
+    public static final String MESSAGE_DATE_CONSTRAINTS = "Start date must be before end date";
 
     private final int targetIndex;
 
@@ -72,17 +71,7 @@ public class EditCommand extends Command {
         this.hasChangedPriority = hasChangedPriority;
     }
 
-    @Override
-    public CommandResult execute() {
-
-        UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
-
-        if (lastShownList.size() < targetIndex) {
-            indicateAttemptToExecuteIncorrectCommand();
-            return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-        }
-
-        ReadOnlyTask taskToEdit = lastShownList.get(targetIndex - 1);
+    public void getEditInformation(ReadOnlyTask taskToEdit) {
         if (hasChangedDescription == false) {
             description = taskToEdit.getDescription();
         }
@@ -101,19 +90,38 @@ public class EditCommand extends Command {
         if (hasChangedPriority == false) {
             taskPriority = taskToEdit.getTaskPriority();
         }
+    }
+
+    @Override
+    public CommandResult execute() {
+
+        UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
+
+        if (lastShownList.size() < targetIndex) {
+            indicateAttemptToExecuteIncorrectCommand();
+            return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+        }
+
+        ReadOnlyTask taskToEdit = lastShownList.get(targetIndex - 1);
+        getEditInformation(taskToEdit);
+
+        if (taskToEdit.getTaskType().equals(Task.FLOATING_TASK) && (hasChangedStartTime == true
+                || hasChangedEndTime == true || hasChangedStartDate == true || hasChangedEndDate == true)) {
+            return new CommandResult(FloatingTask.EDIT_FLOATING_NOT_ALLOWED);
+        }
+
         TaskDate today = TaskDate.getTodayDate();
         TaskTime currentTime = TaskTime.getTimeNow();
-
-        if (startDate.isBefore(today) || endDate.isBefore(today)) {
-            return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
-        } else if (startDate.isAfter(endDate)) {
-            return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
-        } else if (startDate.equals(today) && startTime.isBefore(currentTime)) {
-            return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
-        } else if (startDate.equals(endDate) && startTime.isAfter(endTime)) {
-            return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
-        } else {
-            // valid
+        if (taskToEdit.getTaskType().equals(Task.EVENT_TASK)) {
+            if (startDate.isBefore(today) || endDate.isBefore(today)) {
+                return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
+            } else if (startDate.isAfter(endDate)) {
+                return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
+            } else if (startDate.equals(today) && startTime.isBefore(currentTime)) {
+                return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
+            } else if (startDate.equals(endDate) && startTime.isAfter(endTime)) {
+                return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
+            }
         }
 
         Task newTask = new Task(description, taskToEdit.getTaskType(), startDate, endDate, startTime, endTime,

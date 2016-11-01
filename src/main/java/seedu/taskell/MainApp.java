@@ -15,8 +15,8 @@ import seedu.taskell.commons.util.ConfigUtil;
 import seedu.taskell.commons.util.StringUtil;
 import seedu.taskell.logic.Logic;
 import seedu.taskell.logic.LogicManager;
+import seedu.taskell.logic.commands.ClearCommand;
 import seedu.taskell.logic.commands.SaveStorageLocationCommand;
-import seedu.taskell.logic.commands.UndoCommand;
 import seedu.taskell.logic.commands.ViewHistoryCommand;
 import seedu.taskell.model.*;
 import seedu.taskell.storage.Storage;
@@ -25,7 +25,6 @@ import seedu.taskell.ui.CalendarView;
 import seedu.taskell.ui.Ui;
 import seedu.taskell.ui.UiManager;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
@@ -68,12 +67,22 @@ public class MainApp extends Application {
 
         initEventsCenter();
         
-        HistoryManager.setModel(model);
-        ViewHistoryCommand.getInstance().setData(model);
+        setDataForClasses();
+        
+        initSaveStorageLocationCommand();
+        
+    }
+
+    private void initSaveStorageLocationCommand() {
         SaveStorageLocationCommand.setConfig(config);
         SaveStorageLocationCommand.setStorage(storage);
+    }
+
+    private void setDataForClasses() {
+        HistoryManager.setModel(model);
+        ViewHistoryCommand.getInstance().setData(model);
+        ClearCommand.getInstance().setData(model);
         CalendarView.setData(model);
-        
     }
 
     private String getApplicationParameter(String parameterName){

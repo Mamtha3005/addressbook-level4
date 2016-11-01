@@ -4,6 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import seedu.taskell.MainApp;
@@ -11,6 +12,7 @@ import seedu.taskell.commons.core.ComponentManager;
 import seedu.taskell.commons.core.Config;
 import seedu.taskell.commons.core.LogsCenter;
 import seedu.taskell.commons.events.storage.DataSavingExceptionEvent;
+import seedu.taskell.commons.events.ui.ClearCommandInputEvent;
 import seedu.taskell.commons.events.ui.DisplayCalendarViewEvent;
 import seedu.taskell.commons.events.ui.DisplayListChangedEvent;
 import seedu.taskell.commons.events.ui.JumpToListRequestEvent;
@@ -18,6 +20,7 @@ import seedu.taskell.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.taskell.commons.events.ui.ShowHelpRequestEvent;
 import seedu.taskell.commons.util.StringUtil;
 import seedu.taskell.logic.Logic;
+import seedu.taskell.logic.commands.ClearCommand;
 import seedu.taskell.model.UserPrefs;
 
 import java.util.logging.Logger;
@@ -78,6 +81,16 @@ public class UiManager extends ComponentManager implements Ui {
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }
+    
+    /** @@author A0142130A-reused **/
+    
+    Alert showAlertDialogAndWaitForConfirm(Alert.AlertType type, String title, String headerText, 
+            String contentText) {
+        return showAlertDialogAndWaitForConfirm(mainWindow.getPrimaryStage(), type, title, 
+                headerText, contentText);
+    }
+    
+    /** @@author **/
 
     private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
                                                String contentText) {
@@ -90,6 +103,24 @@ public class UiManager extends ComponentManager implements Ui {
 
         alert.showAndWait();
     }
+    
+    /** @@author A0142130A-reused **/
+    
+    private static Alert showAlertDialogAndWaitForConfirm(Stage owner, AlertType type, 
+            String title, String headerText, String contentText) {
+        final Alert alert = new Alert(type);
+        alert.getDialogPane().getStylesheets().add("view/TaskellCyanTheme.css");
+        alert.initOwner(owner);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+        
+        return alert;
+    }
+    
+    /** @@author **/
 
     private void showFatalErrorDialogAndShutdown(String title, Throwable e) {
         logger.severe(title + " " + e.getMessage() + StringUtil.getDetails(e));
@@ -97,6 +128,15 @@ public class UiManager extends ComponentManager implements Ui {
         Platform.exit();
         System.exit(1);
     }
+    
+    /** @@author A0142130A **/
+    
+    private Alert showConfirmClearAlertDialogAndWait() {
+        return showAlertDialogAndWaitForConfirm(Alert.AlertType.CONFIRMATION, "Clear all tasks?", 
+                "Clear all tasks?", "Are you sure you wish to clear all data?");
+    }
+    
+    /** @@author **/
 
     //==================== Event Handling Code =================================================================
 
@@ -132,6 +172,17 @@ public class UiManager extends ComponentManager implements Ui {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         logger.info("Displaying calendar view...");
         mainWindow.loadCalendarView();
+    }
+    
+    @Subscribe
+    private void handleClearCommandInput(ClearCommandInputEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        Alert alert = showConfirmClearAlertDialogAndWait();
+        
+        if (alert.getResult() == ButtonType.OK) {
+            logger.info("clearing");
+            ClearCommand.getInstance().executeClear();
+        }
     }
     
     /** @@author **/

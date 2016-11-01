@@ -11,6 +11,7 @@ import org.testfx.api.FxToolkit;
 
 import seedu.taskell.TestApp;
 import seedu.taskell.commons.core.EventsCenter;
+import seedu.taskell.logic.commands.ClearCommand;
 import seedu.taskell.model.TaskManager;
 import seedu.taskell.model.task.ReadOnlyTask;
 import seedu.taskell.testutil.TestUtil;
@@ -52,6 +53,7 @@ public abstract class TaskManagerGuiTest {
         try {
             FxToolkit.registerPrimaryStage();
             FxToolkit.hideStage();
+            ClearCommand.setIsUnderTesting(true);
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
