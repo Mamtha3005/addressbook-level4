@@ -33,8 +33,10 @@ public class AddCommand extends Command {
      * @throws IllegalValueException if any of the raw values are invalid
      */
 
-    public AddCommand(String description, String taskType, String startDate, String endDate, String startTime, String endTime, String taskPriority, String recurringType, Set<String> tags)
-            throws IllegalValueException {
+    public AddCommand(String description, String taskType, String startDate, String endDate, 
+            String startTime, String endTime, String taskPriority, 
+            String recurringType, Set<String> tags) throws IllegalValueException {
+        
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -59,12 +61,17 @@ public class AddCommand extends Command {
         try {
             model.addTask(toAdd);
             HistoryManager.getInstance().addTask(toAdd);
+            jumpToNewTaskIndex();
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }
-
+    }
+    
+    private void jumpToNewTaskIndex() {
+        int indexOfNewTask = model.getFilteredTaskList().size()-1;
+        jumpToIndex(indexOfNewTask);
     }
 
 }

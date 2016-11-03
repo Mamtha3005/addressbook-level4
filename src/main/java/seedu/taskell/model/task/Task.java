@@ -33,8 +33,13 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(Description description, String taskType, TaskDate startDate, TaskDate endDate, TaskTime startTime, TaskTime endTime, TaskPriority taskPriority, RecurringType recurringType, TaskStatus taskStatus, UniqueTagList tags) {
-        assert !CollectionUtil.isAnyNull(description, taskType, startDate, startTime, endTime, taskPriority, recurringType, taskStatus, tags);
+    public Task(Description description, String taskType, TaskDate startDate, TaskDate endDate, 
+            TaskTime startTime, TaskTime endTime, TaskPriority taskPriority, 
+            RecurringType recurringType, TaskStatus taskStatus, UniqueTagList tags) {
+        
+        assert !CollectionUtil.isAnyNull(description, taskType, startDate, startTime, 
+                endTime, taskPriority, recurringType, taskStatus, tags);
+        
         this.description = description;
         this.taskType = taskType;
         this.startDate = startDate;
@@ -55,7 +60,10 @@ public class Task implements ReadOnlyTask {
      * Copy constructor.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getDescription(), source.getTaskType(), source.getStartDate(), source.getEndDate(), source.getStartTime(), source.getEndTime(), source.getTaskPriority(), source.getRecurringType(), source.getTaskStatus(), source.getTags());
+        this(source.getDescription(), source.getTaskType(), source.getStartDate(), 
+                source.getEndDate(), source.getStartTime(), source.getEndTime(), 
+                source.getTaskPriority(), source.getRecurringType(), source.getTaskStatus(), 
+                source.getTags());
     }
 
     @Override
@@ -125,7 +133,8 @@ public class Task implements ReadOnlyTask {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(description, startDate, startTime, endTime, taskPriority, recurringType, taskStatus, tags);
+        return Objects.hash(description, startDate, startTime, endTime, 
+                taskPriority, recurringType, taskStatus, tags);
     }
 
     @Override

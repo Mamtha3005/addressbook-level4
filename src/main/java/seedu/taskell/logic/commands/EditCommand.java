@@ -7,7 +7,7 @@ import seedu.taskell.commons.core.UnmodifiableObservableList;
 import seedu.taskell.commons.exceptions.IllegalValueException;
 import seedu.taskell.logic.commands.Command;
 import seedu.taskell.logic.commands.CommandResult;
-import seedu.taskell.logic.commands.UndoCommand;
+import seedu.taskell.model.HistoryManager;
 import seedu.taskell.model.task.Description;
 import seedu.taskell.model.task.FloatingTask;
 import seedu.taskell.model.task.ReadOnlyTask;
@@ -20,10 +20,11 @@ import seedu.taskell.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Edits a task identified using it's last displayed index from the task
- * manager. Supports to edit different parameters of a task including description,
- * time, date and priority of a task.
+ * manager. Supports to edit different parameters of a task including
+ * description, time, date and priority of a task.
  */
 public class EditCommand extends Command {
+    
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -57,30 +58,30 @@ public class EditCommand extends Command {
             TaskDate newStartDate, boolean hasChangedStartDate, TaskDate newEndDate, boolean hasChangedEndDate,
             TaskTime newStartTime, boolean hasChangedStartTime, TaskTime newEndTime, boolean hasChangedEndTime,
             TaskPriority newPriority, boolean hasChangedPriority) throws IllegalValueException {
-        
+
         this.targetIndex = targetIndex;
-        
+
         description = newDescription;
         this.hasChangedDescription = hasChangedDescription;
-        
+
         startTime = newStartTime;
         this.hasChangedStartTime = hasChangedStartTime;
-        
+
         endTime = newEndTime;
         this.hasChangedEndTime = hasChangedEndTime;
-        
+
         startDate = newStartDate;
         this.hasChangedStartDate = hasChangedStartDate;
-        
+
         endDate = newEndDate;
         this.hasChangedEndDate = hasChangedEndDate;
-        
+
         taskPriority = newPriority;
         this.hasChangedPriority = hasChangedPriority;
     }
 
     public void getEditInformation(ReadOnlyTask taskToEdit) {
-        
+
         if (hasChangedDescription == false) {
             description = taskToEdit.getDescription();
         }
@@ -101,6 +102,34 @@ public class EditCommand extends Command {
         }
     }
 
+    private boolean isValidDate(ReadOnlyTask taskToEdit) {
+        if (taskToEdit.getTaskType().equals(Task.EVENT_TASK)) {
+            if (endDate.isBefore(startDate)) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    private boolean isValidTime(ReadOnlyTask taskToEdit) {
+        if (taskToEdit.getTaskType().equals(Task.EVENT_TASK)) {
+            if (endDate.equals(startDate) && endTime.isBefore(startTime)) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+    
+    private void jumpToNewTaskIndex() {
+        jumpToIndex(targetIndex - 1);
+    }
+    
     @Override
     public CommandResult execute() {
 
@@ -108,6 +137,7 @@ public class EditCommand extends Command {
 
         if (lastShownList.size() < targetIndex) {
             indicateAttemptToExecuteIncorrectCommand();
+            HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
@@ -119,18 +149,12 @@ public class EditCommand extends Command {
             return new CommandResult(FloatingTask.EDIT_FLOATING_NOT_ALLOWED);
         }
 
-        TaskDate today = TaskDate.getTodayDate();
-        TaskTime currentTime = TaskTime.getTimeNow();
-        if (taskToEdit.getTaskType().equals(Task.EVENT_TASK)) {
-            if (startDate.isBefore(today) || endDate.isBefore(today)) {
-                return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
-            } else if (startDate.isAfter(endDate)) {
-                return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
-            } else if (startDate.equals(today) && startTime.isBefore(currentTime)) {
-                return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
-            } else if (startDate.equals(endDate) && startTime.isAfter(endTime)) {
-                return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
-            }
+        if (!isValidTime(taskToEdit)) {
+            return new CommandResult(MESSAGE_TIME_CONSTRAINTS);
+        }
+
+        if (!isValidDate(taskToEdit)) {
+            return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
         }
 
         Task newTask = new Task(description, taskToEdit.getTaskType(), startDate, endDate, startTime, endTime,
@@ -138,9 +162,14 @@ public class EditCommand extends Command {
 
         try {
             model.editTask(taskToEdit, newTask);
+            HistoryManager.getInstance().addTask(newTask);
+            HistoryManager.getInstance().addOldTask((Task) taskToEdit);
+            jumpToNewTaskIndex();
         } catch (DuplicateTaskException pnfe) {
+            HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         } catch (TaskNotFoundException pnfe) {
+            HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(TASK_NOT_FOUND);
         }
 

@@ -50,6 +50,9 @@ public class TaskTime {
         }
     }
 
+    /**
+     * Returns true if given string is a valid 12-hour time in the real world
+     */
     public static boolean isValidTime(String time) {
         assert time != null;
         if (time.isEmpty()) {
@@ -71,12 +74,7 @@ public class TaskTime {
     
     private static boolean isValidNow(String time) {
         time = time.toLowerCase();
-        switch (time) {
-        case "now":
-            return true;
-        default:
-            return false;
-        }
+        return "now".equals(time);
     }
     
     private static boolean isValidNoon(String time) {
@@ -138,9 +136,13 @@ public class TaskTime {
         final Matcher matcherFullArg = TASK_TIME_ARGS_FORMAT.matcher(time.trim());
         final Matcher matcherHourOnly = TASK_TIME_HOUR_ONLY_FORMAT.matcher(time.trim());
         if (matcherFullArg.matches()) {
-            this.taskTime = setTime(matcherFullArg.group("hour"), matcherFullArg.group("minute"), matcherFullArg.group("antePost"));
+            this.taskTime = setTime(matcherFullArg.group("hour"), 
+                    matcherFullArg.group("minute"), 
+                    matcherFullArg.group("antePost"));
         } else if (matcherHourOnly.matches()) {
-            this.taskTime = setTime(matcherHourOnly.group("hour"), ZERO_MINUTE, matcherHourOnly.group("antePost"));
+            this.taskTime = setTime(matcherHourOnly.group("hour"), 
+                    ZERO_MINUTE, 
+                    matcherHourOnly.group("antePost"));
         } else if (isValidNow(time)) {
             this.taskTime = getTimeNow().toString();
         } else if (isValidNoon(time)) {

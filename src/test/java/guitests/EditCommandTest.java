@@ -16,8 +16,6 @@ import static org.junit.Assert.assertTrue;
 import static seedu.taskell.logic.commands.EditCommand.MESSAGE_EDIT_TASK_SUCCESS;
 import static seedu.taskell.logic.commands.EditCommand.MESSAGE_USAGE;
 import static seedu.taskell.logic.commands.EditCommand.COMMAND_WORD;
-import static seedu.taskell.logic.commands.EditCommand.MESSAGE_DATE_CONSTRAINTS;
-import static seedu.taskell.logic.commands.EditCommand.MESSAGE_TIME_CONSTRAINTS;
 
 public class EditCommandTest extends TaskManagerGuiTest {
 

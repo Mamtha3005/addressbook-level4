@@ -68,24 +68,22 @@ public class AddCommandTest extends TaskManagerGuiTest {
 ``` java
     @Test
     public void execute_add_invalidTaskData() throws Exception {
-        assertCommandBehavior(
-                "add #descriptionIsEmpty", Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description with invalid startDate format by 1-jan-16", TaskDate.MESSAGE_TASK_DATE_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description with start date before today's date on 1-jan-2000", EventTask.MESSAGE_EVENT_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description with end date before today's date by 1-jan-2000", EventTask.MESSAGE_EVENT_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description with startDate after endDate from 1-jan-2200 to 1-jan-2100", EventTask.MESSAGE_EVENT_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description with startTime before Today's current time at 12am", EventTask.MESSAGE_EVENT_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description p/invalidPriority ", TaskPriority.MESSAGE_TASK_PRIORITY_CONSTRAINTS);
-        assertCommandBehavior(
-                "add Valid Description p/0 p/1 ", String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-        assertCommandBehavior(
-                "add Valid Description #invalid_-[.tag", Tag.MESSAGE_TAG_CONSTRAINTS);
+        assertCommandBehavior("add #descriptionIsEmpty", Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description with invalid startDate format by 1-jan-16",
+                TaskDate.MESSAGE_TASK_DATE_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description with start date before today's date on 1-jan-2000",
+                EventTask.MESSAGE_EVENT_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description with end date before today's date by 1-jan-2000",
+                EventTask.MESSAGE_EVENT_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description with startDate after endDate from 1-jan-2200 to 1-jan-2100",
+                EventTask.MESSAGE_EVENT_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description with startTime before Today's current time at 12am",
+                EventTask.MESSAGE_EVENT_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description p/invalidPriority ",
+                TaskPriority.MESSAGE_TASK_PRIORITY_CONSTRAINTS);
+        assertCommandBehavior("add Valid Description p/0 p/1 ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+        assertCommandBehavior("add Valid Description #invalid_-[.tag", Tag.MESSAGE_TAG_CONSTRAINTS);
     }
 
     @Test
@@ -98,11 +96,9 @@ public class AddCommandTest extends TaskManagerGuiTest {
 
         // execute command and verify result
         assertCommandBehavior(helper.generateAddCommand(toBeAdded),
-                String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded),
-                expectedAB,
-                expectedAB.getTaskList());
+                String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded), expectedAB, expectedAB.getTaskList());
     }
-    
+
 ```
 ###### \java\seedu\taskell\logic\LogicManagerTest.java
 ``` java
@@ -118,10 +114,7 @@ public class AddCommandTest extends TaskManagerGuiTest {
         model.addTask(toBeAdded); // task already in internal task manager
 
         // execute command and verify result
-        assertCommandBehavior(
-                helper.generateAddCommand(toBeAdded),
-                AddCommand.MESSAGE_DUPLICATE_TASK,
-                expectedAB,
+        assertCommandBehavior(helper.generateAddCommand(toBeAdded), AddCommand.MESSAGE_DUPLICATE_TASK, expectedAB,
                 expectedAB.getTaskList());
 
     }

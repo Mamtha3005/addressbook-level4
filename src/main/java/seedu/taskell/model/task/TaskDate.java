@@ -248,6 +248,9 @@ public class TaskDate {
                 || isValidTomorrow(dateToValidate) || isValidDayOfWeek(dateToValidate);
     }
 
+    /**
+     * Returns true if given string is the same as a name of the week
+     */
     public static boolean isValidDayOfWeek(String dateToValidate) {
         if (convertDayOfWeekIntoInteger(dateToValidate) == NOT_A_VALID_DAY_OF_THE_WEEK) {
             return false;
@@ -310,6 +313,9 @@ public class TaskDate {
         return true;
     }
 
+    /**
+     * Returns true if given string contains a word that suggest today
+     */
     public static boolean isValidToday(String dateToValidate) {
         assert (dateToValidate != null);
         dateToValidate = dateToValidate.toLowerCase();
@@ -324,6 +330,9 @@ public class TaskDate {
         }
     }
 
+    /**
+     * Returns true if given string contains a word that suggest tomorrow
+     */
     public static boolean isValidTomorrow(String dateToValidate) {
         assert (dateToValidate != null);
         dateToValidate = dateToValidate.toLowerCase();
@@ -338,6 +347,9 @@ public class TaskDate {
         }
     }
 
+    /**
+     * Returns true if the given string has the same name as a month in the year
+     */
     public static boolean isValidMonth(String month) {
         if (convertMonthIntoInteger(month) == NOT_A_VALID_MONTH) {
             return false;
@@ -588,6 +600,9 @@ public class TaskDate {
         return convertToStandardFormat(day, month, year);
     }
     
+    /**
+     * Returns true if the given date is before this date
+     */
     public boolean isBefore(TaskDate date) {
         try {
             LocalDate thisDate = this.getLocalDate();
@@ -598,6 +613,9 @@ public class TaskDate {
         }
     }
     
+    /**
+     * Returns true if the given date is after this date
+     */
     public boolean isAfter(TaskDate date) {
         try {
             LocalDate thisDate = this.getLocalDate();

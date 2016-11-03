@@ -6,12 +6,16 @@ import seedu.taskell.commons.events.ui.ClearCommandInputEvent;
 import seedu.taskell.model.TaskManager;
 
 /**
- * Clears the task manager. Will show confirm dialog.
+ * Clears the task manager. Will show confirm dialog before clearing.
  */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
     public static final String MESSAGE_SUCCESS = "Clear command executed.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Clears all tasks.\n"
+            + "Example: " + COMMAND_WORD;
+    
     private static ClearCommand self;
     private static boolean isUnderTesting;  //for testing ONLY
 
@@ -56,5 +60,4 @@ public class ClearCommand extends Command {
         EventsCenter.getInstance().post(new ClearCommandInputEvent());      
     }
     
-    /** @@author **/
 }
