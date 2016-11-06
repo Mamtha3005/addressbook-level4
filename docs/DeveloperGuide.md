@@ -60,7 +60,7 @@ This developer guide will help you understand the design and implementation of T
   
 **Problem: Eclipse reports some required libraries missing**
 * Reason: Required libraries may not have been downloaded during the project import. 
-* Solution: [Run tests using Gardle](UsingGradle.md) once (to refresh the libraries).
+* Solution: [Run tests using Gradle](UsingGradle.md) once (to refresh the libraries).
  
 
 ## Design
@@ -91,6 +91,7 @@ The rest of the Application consists four components.
 * [**`Logic`**](#logic-component) : Command executor.
 * [**`Model`**](#model-component) : Data Holder of the Application in-memory.
 * [**`Storage`**](#storage-component) : Data read from, and written to the hard disk.
+* [**`History`**](#history-component) : Data holder of Application's command history (for undo only).
 
 Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
@@ -157,6 +158,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` changes.
 * Responds to events raised from various parts of the Application and updates the UI accordingly.
+* Uses [Agenda API](http://jfxtras.org/doc/8.0/jfxtras-agenda/index.html) from JFXtras to display calendar view with task events.
 
 ### Logic Component
 
@@ -166,7 +168,7 @@ The `UI` component,
 <em>Diagram 6: Logic Class Diagram </em>
 </p>
 
-The diagram above gives an overview of how the `Logic`component is implemented.<br>
+The diagram above gives an overview of how the `Logic` component is implemented.<br>
 <br>**API** : [`Logic.java`](../src/main/java/seedu/taskell/logic/Logic.java)
 
 The `Logic` component,
@@ -180,15 +182,26 @@ The `Logic` component,
 <em>Diagram 7: Add Task Sequence Diagram For Logic</em>
 </p>
 
-The diagram above shows the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
- API call.<br>
+<!--- @@author A0142130A --->
+
+The diagram above shows the Sequence Diagram for interactions within the `Logic` component for the `execute("add buy cake")` API call.<br>
+
+<p align="center">
+<img src="images/DeleteTaskSdForLogic.png" width="800"><br>
+  
+<em>Diagram 8: Delete Task Sequence Diagram For Logic</em>
+</p>
+
+The diagram above shows the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.<br>
+ 
+ <!--- @@author --->
  
 ### Model Component
 
 <p align="center">
 <img src="images/ModelClassDiagram.png" width="800"><br>
 
-<em>Diagram 7: Model Class Diagram </em>
+<em>Diagram 9: Model Class Diagram </em>
 </p>
 
 The diagram above gives an overview of how the `Model` component is implemented.<br>
@@ -206,7 +219,7 @@ The `Model` component,
 <p align="center">
 <img src="images/StorageClassDiagram.png" width="800"><br>
 
-<em>Diagram 8: Storage Class Diagram </em>
+<em>Diagram 10: Storage Class Diagram </em>
 </p>
 
 The diagram above gives an overview of how the `Storage` component is implemented.<br>
@@ -215,6 +228,26 @@ The diagram above gives an overview of how the `Storage` component is implemente
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the Task Manager data in xml format and read it back.
+
+<!--- @@author A0142130A --->
+
+### History Component
+
+<p align="center">
+<img src="images/HistoryClassDiagram.png" width="500"><br>
+
+<em>Diagram 11: History Class Diagram </em>
+</p>
+
+The diagram above gives an overview of how the `History` component is implemented.<br>
+<br>**API** : [`History.java`](../src/main/java/seedu/taskell/model/History.java)
+
+The `History` component,
+* stores the commands that UndoCommand can execute (add/delete/done/undone/edit)
+* exposes list of command input strings for UI display
+* updates list of command history every time a command is executed
+
+<!--- @@author --->
 
 ### Common Classes
 
@@ -244,7 +277,8 @@ and logging destinations.
 ### Configuration
 
 Certain properties of the application can be controlled (e.g Application name, logging level) through the configuration file 
-(default: `config.json`):
+(default: `config.json`) <br>
+To reset properties in the configuration file, delete `config.json` and run Taskell again.
 
 
 ## Testing
@@ -472,7 +506,7 @@ Use case ends
 2. Taskell executes it
 3. User requests to view undo commands history
 4. User requests to undo command at specific index
-5. Taskell revert the command <br>
+5. Taskell reverts the command <br>
 Use case ends
 
 **Extensions**
@@ -521,32 +555,38 @@ Use case ends
 
 **Extensions**
 
+1a. User gives invalid filename (contains illegal symbols not allowed in file names)
+
+> 1a1. Taskell shows an error message and still saves data in previous old location.<br>
+
 2a. Data cannot be written to the requested folder (invalid directory or access prohibited)
 
 > 2a1. Taskell shows an error message and still saves data in previous old location.<br>
-
-<!--- @@author --->
 
 #### Use case: Clear task
 
 **MSS**
 
 1. User requests to clear all tasks
-2. Taskell deletes all tasks
+2. Taskell shows pop-up to ask for confirmation
+3. User confirms
+4. Taskell deletes all tasks
 Use case ends
 
 **Extensions**
 
-2a. The list is empty
+3a. User cancels request
 
-> 2a1. Taskell shows an error message <br>
+> 3a1. Taskell does not clear all tasks <br>
+
+<!--- @@author --->
 
 #### Use case: Exit task
 
 **MSS**
 
 1. User requests to exit Taskell
-2. Taskell saves all the data and stops
+2. Taskell window closes
 Use case ends
 
 **Extensions**

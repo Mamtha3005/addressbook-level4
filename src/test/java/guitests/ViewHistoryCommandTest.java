@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import seedu.taskell.history.HistoryManager;
 import seedu.taskell.logic.commands.ViewHistoryCommand;
-import seedu.taskell.model.HistoryManager;
 import seedu.taskell.ui.DisplayPanel;
 
 public class ViewHistoryCommandTest extends TaskManagerGuiTest {

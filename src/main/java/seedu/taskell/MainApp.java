@@ -13,6 +13,7 @@ import seedu.taskell.commons.events.ui.ExitAppRequestEvent;
 import seedu.taskell.commons.exceptions.DataConversionException;
 import seedu.taskell.commons.util.ConfigUtil;
 import seedu.taskell.commons.util.StringUtil;
+import seedu.taskell.history.HistoryManager;
 import seedu.taskell.logic.Logic;
 import seedu.taskell.logic.LogicManager;
 import seedu.taskell.logic.commands.ClearCommand;
@@ -53,6 +54,7 @@ public class MainApp extends Application {
         super.init();
 
         config = initConfig(getApplicationParameter("config"));
+        
         storage = new StorageManager(config.getTaskManagerFilePath(), config.getUserPrefsFilePath());
 
         userPrefs = initPrefs(config);
@@ -206,8 +208,11 @@ public class MainApp extends Application {
     /** @@author A0142130A **/
     @Subscribe
     private void handleStorageLocationChangedEvent(StorageLocationChangedEvent event) {
+        logger.info("saving storage");
         config = event.getConfig();
+        storage.clearTaskManager();
         storage = new StorageManager(config.getTaskManagerFilePath(), config.getUserPrefsFilePath());
+        SaveStorageLocationCommand.setStorage(storage);
     }
     /** @@author **/
 

@@ -103,13 +103,13 @@ public class TaskDateTest {
         assertEquals(today.getNextWeek(), validDayOfWeek);
         
         TaskDate validMonth = new TaskDate("september");
-        assertEquals("1-9-2016", validMonth.toString());
+        assertEquals("1-9-2017", validMonth.toString());
         
-        TaskDate validMonthAndYear = new TaskDate("dec-2016");
-        assertEquals("1-12-2016", validMonthAndYear.toString());
+        TaskDate validMonthAndYear = new TaskDate("dec-2017");
+        assertEquals("1-12-2017", validMonthAndYear.toString());
         
         TaskDate validDayAndMonth = new TaskDate("1-jan");
-        assertEquals("1-1-2016", validDayAndMonth.toString());
+        assertEquals("1-1-2017", validDayAndMonth.toString());
         
         TaskDate validFullDate = new TaskDate("1-1-2011");
         assertEquals("1-1-2011", validFullDate.toString());

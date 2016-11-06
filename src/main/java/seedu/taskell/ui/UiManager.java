@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  */
 public class UiManager extends ComponentManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
-    private static final String ICON_APPLICATION = "/images/task_manager_32.png";
+    private static final String ICON_APPLICATION = "/images/cyan_folder_icon.png";
 
     private Logic logic;
     private Config config;

@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.junit.After;
 import org.junit.Test;
 
 import seedu.taskell.TestApp;
@@ -61,7 +62,7 @@ public class SaveStorageLocationCommandTest extends TaskManagerGuiTest {
      *          config.json in Taskell saves the test data so this method is necessary to reset
      *          config.json to default data
      * */
-    @Test
+    @After
     public void resetConfigFile() throws IOException {
         Config config = new Config();
         config.setAppTitle("Taskell");

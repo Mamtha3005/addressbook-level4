@@ -147,6 +147,11 @@ public class TaskDate {
             month = convertMonthIntoInteger(monthStr);
         }
         int year = Integer.valueOf(getThisYear());
+        
+        TaskDate date = new TaskDate(convertToStandardFormat(day, month, year));
+        if (!date.isAfter(getTodayDate())) {
+            year++;
+        }
 
         try {
             setDate(day, month, year);
@@ -174,7 +179,7 @@ public class TaskDate {
             month = convertMonthIntoInteger(monthStr);
         }
         int year = Integer.valueOf(tokenArr[1]);
-
+        
         try {
             setDate(day, month, year);
             getYear();
@@ -183,29 +188,53 @@ public class TaskDate {
         }
     }
     
-    private void setDateGivenMonth(String monthToConvert) {
+    private void setDateGivenMonth(String monthToConvert) throws IllegalValueException {
+        TaskDate date = determineDayGivenMonth(monthToConvert);
+        setDate(date.getLocalDate().getDayOfMonth(), 
+                date.getLocalDate().getMonthValue(),
+                date.getLocalDate().getYear());
+    }
+    
+    private TaskDate determineDayGivenMonth(String monthToConvert) throws IllegalValueException {
         int day = FIRST_DAY_OF_THE_MONTH;
         int month = convertMonthIntoInteger(monthToConvert);
         int year = Integer.valueOf(getThisYear());
-
-        try {
-            setDate(day, month, year);
-        } catch (DateTimeException dte) {
-            throw dte;
+        
+        TaskDate date = new TaskDate(convertToStandardFormat(day, month, year));
+        if (!date.isAfter(getTodayDate())) {
+            year++;
         }
+        
+        return new TaskDate(convertToStandardFormat(day, month, year));
     }
     
     private void setDateGivenDayNameOfWeek(String dayName) {
+        TaskDate finalDate = determineDayInWeekGivenName(dayName);
+        setDate(finalDate.getLocalDate().getDayOfMonth(), 
+                finalDate.getLocalDate().getMonthValue(), 
+                finalDate.getLocalDate().getYear());
+    }
+    
+    public static TaskDate determineDayInWeekGivenName(String dayName) {
         int day = convertDayOfWeekIntoInteger(dayName);
         LocalDate today = LocalDate.now();
         String todayDayNameInWeek = today.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US);
         int todayDayInWeek = convertDayOfWeekIntoInteger(todayDayNameInWeek);
+        
         int daysToAdd = day - todayDayInWeek;
         if (daysToAdd <= 0) {
             daysToAdd += NUM_DAYS_IN_A_WEEK;
         }
+        
         LocalDate finalDate = today.plusDays(daysToAdd);
-        setDate(finalDate.getDayOfMonth(), finalDate.getMonthValue(), finalDate.getYear());
+        String newDateString = convertToStandardFormat(finalDate.getDayOfMonth(), 
+                finalDate.getMonthValue(), finalDate.getYear());
+        
+        try {
+            return new TaskDate(newDateString);
+        } catch (IllegalValueException e) {
+            return null;
+        }
     }
     
     private void setDateGivenToday(String taskDate) {
@@ -503,7 +532,7 @@ public class TaskDate {
     //@@author A0148004R-reused
     public TaskDate getNextMonth() throws IllegalValueException {
         try {
-            LocalDate localDate = LocalDate.of(Integer.valueOf(getYear()), Integer.valueOf(getMonth()), Integer.valueOf(getDay()));
+            LocalDate localDate = this.getLocalDate();
             LocalDate nextMonth = localDate.plusMonths(1);
             return new TaskDate(nextMonth.format(standardFormat));
         } catch (IllegalValueException e) {
@@ -513,6 +542,16 @@ public class TaskDate {
     //@@author
     
     //@@author A0139257X
+    public TaskDate getNextYear() throws IllegalValueException {
+        try {
+            LocalDate localDate = this.getLocalDate();
+            LocalDate nextMonth = localDate.plusYears(1);
+            return new TaskDate(nextMonth.format(standardFormat));
+        } catch (IllegalValueException e) {
+            throw new IllegalValueException(MESSAGE_TASK_DATE_CONSTRAINTS);
+        }
+    }
+    
     /**
      * Returns a string representing the integer value of this year
      */

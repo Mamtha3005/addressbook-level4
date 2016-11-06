@@ -8,7 +8,9 @@ import seedu.taskell.commons.core.Config;
 import seedu.taskell.commons.core.EventsCenter;
 import seedu.taskell.commons.core.LogsCenter;
 import seedu.taskell.commons.events.storage.StorageLocationChangedEvent;
+import seedu.taskell.commons.exceptions.DataConversionException;
 import seedu.taskell.model.ReadOnlyTaskManager;
+import seedu.taskell.model.task.Task;
 import seedu.taskell.storage.JsonConfigStorage;
 import seedu.taskell.storage.Storage;
 
@@ -63,7 +65,11 @@ public class SaveStorageLocationCommand extends Command {
         indicateStorageLocationChanged();
         try {
             storage.saveTaskManager(taskManager, newStorageFilePath);
+            storage.readTaskManager();
         } catch (IOException e) {
+            handleInvalidFilePathException();
+            return new CommandResult(MESSAGE_INVALID_PATH);
+        } catch (DataConversionException e) {
             handleInvalidFilePathException();
             return new CommandResult(MESSAGE_INVALID_PATH);
         }

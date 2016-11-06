@@ -6,10 +6,10 @@
         assert model != null;
         try {
             model.addTask(toAdd);
-            UndoCommand.addTaskToCommandHistory(toAdd);
+            HistoryManager.getInstance().addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
-            UndoCommand.deletePreviousCommand();
+            HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }
 

@@ -2,7 +2,7 @@ package seedu.taskell.logic.commands;
 
 import seedu.taskell.commons.core.Messages;
 import seedu.taskell.commons.core.UnmodifiableObservableList;
-import seedu.taskell.model.HistoryManager;
+import seedu.taskell.history.HistoryManager;
 import seedu.taskell.model.task.ReadOnlyTask;
 import seedu.taskell.model.task.Task;
 import seedu.taskell.model.task.UniqueTaskList.TaskNotFoundException;

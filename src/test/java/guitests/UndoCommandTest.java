@@ -6,9 +6,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
+import seedu.taskell.history.History;
+import seedu.taskell.history.HistoryManager;
 import seedu.taskell.logic.commands.UndoCommand;
-import seedu.taskell.model.History;
-import seedu.taskell.model.HistoryManager;
 import seedu.taskell.testutil.TestTask;
 import seedu.taskell.testutil.TestUtil;
 

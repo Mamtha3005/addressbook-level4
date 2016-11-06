@@ -28,7 +28,7 @@ Role: Team Leader
 
 Role: Developer 
 * Components in charge of: [Storage](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/DeveloperGuide.md#storage-component), 
-[UI](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/DeveloperGuide.md#ui-component)
+[UI](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/DeveloperGuide.md#ui-component), [History](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/DeveloperGuide.md#history-component)
 * Aspects/tools in charge of: Testing, Integration, Git
 * Features implemented:
    * [Save Location](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#saving-the-information-in-taskell--save)
@@ -61,7 +61,7 @@ Role: Developer
 [[docs](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/collated/docs/A0142073R.md)]
 * Other major contributions:
 	* Contributed to second round refactoring from AddressBook Level 4 to Taskell [[#64](https://github.com/CS2103AUG2016-W15-C3/main/pull/64)]
-	* Copy, editing and revising of documentation
+	* Copy-editing and revising of documentation
 
 -----
 <!-- @@author A0148004R -->
@@ -71,7 +71,7 @@ Role: Developer
 * Components in charge of: [Model](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/DeveloperGuide.md#model-component)
 * Aspects/tools in charge of: Testing, Scheduling
 * Features implemented:
-	* [Done Command](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#marking-a-task-as-completed-done
+	* [Done Command](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#marking-a-task-as-completed-done)
 	* [List Command](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#listing-tasks--list)
 	* [List-all Command](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#listing-tasks--list)
 	* [List-done Command](https://github.com/CS2103AUG2016-W15-C3/main/blob/master/docs/UserGuide.md#listing-tasks--list)
@@ -83,6 +83,11 @@ Role: Developer
 * Other major contributions:
 	* Contributed to second round refactoring from AddressBook Level 4 to Taskell
 
+-----
+
+## Project Mentor
+#### [Akshay Narayan](https://github.com/okkhoy)
+<img src="images/AkshayNarayan.jpg" width="150"><br>
 
 -----
 

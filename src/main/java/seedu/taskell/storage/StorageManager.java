@@ -68,6 +68,7 @@ public class StorageManager extends ComponentManager implements Storage {
     @Override
     public void saveTaskManager(ReadOnlyTaskManager taskManager) throws IOException {
         saveTaskManager(taskManager, taskManagerStorage.getTaskManagerFilePath());
+        logger.info(taskManagerStorage.getTaskManagerFilePath());
     }
 
     @Override
@@ -75,7 +76,14 @@ public class StorageManager extends ComponentManager implements Storage {
         logger.fine("Attempting to write to data file: " + filePath);
         taskManagerStorage.saveTaskManager(taskManager, filePath);
     }
-
+    
+    @Override
+    /** fixes bug whereby Taskell saves new data to both new and old file locations
+     *  in the same session (meaning user has not closed app)
+     * */
+    public void clearTaskManager() {
+        this.taskManagerStorage = null;
+    }
 
     @Override
     @Subscribe

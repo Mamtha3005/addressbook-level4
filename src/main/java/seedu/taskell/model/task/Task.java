@@ -26,6 +26,25 @@ public class Task implements ReadOnlyTask {
     
     protected UniqueTagList tags;
     
+    public static final int NUM_BOOLEAN_TASK_COMPONENT = 7;
+    public static final int START_DATE_COMPONENT = 0;
+    public static final int END_DATE_COMPONENT = 1;
+    public static final int START_TIME_COMPONENT = 2;
+    public static final int END_TIME_COMPONENT = 3;
+    public static final int RECURRING_COMPONENT = 4;
+    public static final int DESCRIPTION_COMPONENT = 5;
+    public static final int PRIORITY_COMPONENT = 6;
+    
+    public static final int NUM_TASK_COMPONENT = 8;
+    public static final int DESCRIPTION = 0;
+    public static final int START_DATE = 1;
+    public static final int END_DATE = 2;
+    public static final int START_TIME = 3;
+    public static final int END_TIME = 4;
+    public static final int TASK_PRIORITY = 5;
+    public static final int RECURRING_TYPE = 6;
+    public static final int TAG = 7;
+    
     public Task() { 
         //Not applicable
     }
