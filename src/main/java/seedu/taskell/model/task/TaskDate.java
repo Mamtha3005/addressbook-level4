@@ -147,11 +147,6 @@ public class TaskDate {
             month = convertMonthIntoInteger(monthStr);
         }
         int year = Integer.valueOf(getThisYear());
-        
-        TaskDate date = new TaskDate(convertToStandardFormat(day, month, year));
-        if (!date.isAfter(getTodayDate())) {
-            year++;
-        }
 
         try {
             setDate(day, month, year);
@@ -179,7 +174,7 @@ public class TaskDate {
             month = convertMonthIntoInteger(monthStr);
         }
         int year = Integer.valueOf(tokenArr[1]);
-        
+
         try {
             setDate(day, month, year);
             getYear();
@@ -188,53 +183,29 @@ public class TaskDate {
         }
     }
     
-    private void setDateGivenMonth(String monthToConvert) throws IllegalValueException {
-        TaskDate date = determineDayGivenMonth(monthToConvert);
-        setDate(date.getLocalDate().getDayOfMonth(), 
-                date.getLocalDate().getMonthValue(),
-                date.getLocalDate().getYear());
-    }
-    
-    private TaskDate determineDayGivenMonth(String monthToConvert) throws IllegalValueException {
+    private void setDateGivenMonth(String monthToConvert) {
         int day = FIRST_DAY_OF_THE_MONTH;
         int month = convertMonthIntoInteger(monthToConvert);
         int year = Integer.valueOf(getThisYear());
-        
-        TaskDate date = new TaskDate(convertToStandardFormat(day, month, year));
-        if (!date.isAfter(getTodayDate())) {
-            year++;
+
+        try {
+            setDate(day, month, year);
+        } catch (DateTimeException dte) {
+            throw dte;
         }
-        
-        return new TaskDate(convertToStandardFormat(day, month, year));
     }
     
     private void setDateGivenDayNameOfWeek(String dayName) {
-        TaskDate finalDate = determineDayInWeekGivenName(dayName);
-        setDate(finalDate.getLocalDate().getDayOfMonth(), 
-                finalDate.getLocalDate().getMonthValue(), 
-                finalDate.getLocalDate().getYear());
-    }
-    
-    public static TaskDate determineDayInWeekGivenName(String dayName) {
         int day = convertDayOfWeekIntoInteger(dayName);
         LocalDate today = LocalDate.now();
         String todayDayNameInWeek = today.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US);
         int todayDayInWeek = convertDayOfWeekIntoInteger(todayDayNameInWeek);
-        
         int daysToAdd = day - todayDayInWeek;
         if (daysToAdd <= 0) {
             daysToAdd += NUM_DAYS_IN_A_WEEK;
         }
-        
         LocalDate finalDate = today.plusDays(daysToAdd);
-        String newDateString = convertToStandardFormat(finalDate.getDayOfMonth(), 
-                finalDate.getMonthValue(), finalDate.getYear());
-        
-        try {
-            return new TaskDate(newDateString);
-        } catch (IllegalValueException e) {
-            return null;
-        }
+        setDate(finalDate.getDayOfMonth(), finalDate.getMonthValue(), finalDate.getYear());
     }
     
     private void setDateGivenToday(String taskDate) {
@@ -277,6 +248,9 @@ public class TaskDate {
                 || isValidTomorrow(dateToValidate) || isValidDayOfWeek(dateToValidate);
     }
 
+    /**
+     * Returns true if given string is the same as a name of the week
+     */
     public static boolean isValidDayOfWeek(String dateToValidate) {
         if (convertDayOfWeekIntoInteger(dateToValidate) == NOT_A_VALID_DAY_OF_THE_WEEK) {
             return false;
@@ -339,6 +313,9 @@ public class TaskDate {
         return true;
     }
 
+    /**
+     * Returns true if given string contains a word that suggest today
+     */
     public static boolean isValidToday(String dateToValidate) {
         assert (dateToValidate != null);
         dateToValidate = dateToValidate.toLowerCase();
@@ -353,6 +330,9 @@ public class TaskDate {
         }
     }
 
+    /**
+     * Returns true if given string contains a word that suggest tomorrow
+     */
     public static boolean isValidTomorrow(String dateToValidate) {
         assert (dateToValidate != null);
         dateToValidate = dateToValidate.toLowerCase();
@@ -367,6 +347,9 @@ public class TaskDate {
         }
     }
 
+    /**
+     * Returns true if the given string has the same name as a month in the year
+     */
     public static boolean isValidMonth(String month) {
         if (convertMonthIntoInteger(month) == NOT_A_VALID_MONTH) {
             return false;
@@ -532,7 +515,7 @@ public class TaskDate {
     //@@author A0148004R-reused
     public TaskDate getNextMonth() throws IllegalValueException {
         try {
-            LocalDate localDate = this.getLocalDate();
+            LocalDate localDate = LocalDate.of(Integer.valueOf(getYear()), Integer.valueOf(getMonth()), Integer.valueOf(getDay()));
             LocalDate nextMonth = localDate.plusMonths(1);
             return new TaskDate(nextMonth.format(standardFormat));
         } catch (IllegalValueException e) {
@@ -542,16 +525,6 @@ public class TaskDate {
     //@@author
     
     //@@author A0139257X
-    public TaskDate getNextYear() throws IllegalValueException {
-        try {
-            LocalDate localDate = this.getLocalDate();
-            LocalDate nextMonth = localDate.plusYears(1);
-            return new TaskDate(nextMonth.format(standardFormat));
-        } catch (IllegalValueException e) {
-            throw new IllegalValueException(MESSAGE_TASK_DATE_CONSTRAINTS);
-        }
-    }
-    
     /**
      * Returns a string representing the integer value of this year
      */
@@ -627,6 +600,9 @@ public class TaskDate {
         return convertToStandardFormat(day, month, year);
     }
     
+    /**
+     * Returns true if the given date is before this date
+     */
     public boolean isBefore(TaskDate date) {
         try {
             LocalDate thisDate = this.getLocalDate();
@@ -637,6 +613,9 @@ public class TaskDate {
         }
     }
     
+    /**
+     * Returns true if the given date is after this date
+     */
     public boolean isAfter(TaskDate date) {
         try {
             LocalDate thisDate = this.getLocalDate();

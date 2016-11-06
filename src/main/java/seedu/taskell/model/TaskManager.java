@@ -180,7 +180,9 @@ public class TaskManager implements ReadOnlyTaskManager {
         return Objects.hash(tasks, tags);
     }
     
+    /** @@author A0142130A **/
     public boolean isTaskPresent(Task task) {
         return tasks.contains(task);
     }
+    /** @@author **/
 }

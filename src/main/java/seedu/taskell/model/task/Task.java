@@ -26,25 +26,6 @@ public class Task implements ReadOnlyTask {
     
     protected UniqueTagList tags;
     
-    public static final int NUM_BOOLEAN_TASK_COMPONENT = 7;
-    public static final int START_DATE_COMPONENT = 0;
-    public static final int END_DATE_COMPONENT = 1;
-    public static final int START_TIME_COMPONENT = 2;
-    public static final int END_TIME_COMPONENT = 3;
-    public static final int RECURRING_COMPONENT = 4;
-    public static final int DESCRIPTION_COMPONENT = 5;
-    public static final int PRIORITY_COMPONENT = 6;
-    
-    public static final int NUM_TASK_COMPONENT = 8;
-    public static final int DESCRIPTION = 0;
-    public static final int START_DATE = 1;
-    public static final int END_DATE = 2;
-    public static final int START_TIME = 3;
-    public static final int END_TIME = 4;
-    public static final int TASK_PRIORITY = 5;
-    public static final int RECURRING_TYPE = 6;
-    public static final int TAG = 7;
-    
     public Task() { 
         //Not applicable
     }
@@ -52,8 +33,13 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(Description description, String taskType, TaskDate startDate, TaskDate endDate, TaskTime startTime, TaskTime endTime, TaskPriority taskPriority, RecurringType recurringType, TaskStatus taskStatus, UniqueTagList tags) {
-        assert !CollectionUtil.isAnyNull(description, taskType, startDate, startTime, endTime, taskPriority, recurringType, taskStatus, tags);
+    public Task(Description description, String taskType, TaskDate startDate, TaskDate endDate, 
+            TaskTime startTime, TaskTime endTime, TaskPriority taskPriority, 
+            RecurringType recurringType, TaskStatus taskStatus, UniqueTagList tags) {
+        
+        assert !CollectionUtil.isAnyNull(description, taskType, startDate, startTime, 
+                endTime, taskPriority, recurringType, taskStatus, tags);
+        
         this.description = description;
         this.taskType = taskType;
         this.startDate = startDate;
@@ -74,7 +60,10 @@ public class Task implements ReadOnlyTask {
      * Copy constructor.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getDescription(), source.getTaskType(), source.getStartDate(), source.getEndDate(), source.getStartTime(), source.getEndTime(), source.getTaskPriority(), source.getRecurringType(), source.getTaskStatus(), source.getTags());
+        this(source.getDescription(), source.getTaskType(), source.getStartDate(), 
+                source.getEndDate(), source.getStartTime(), source.getEndTime(), 
+                source.getTaskPriority(), source.getRecurringType(), source.getTaskStatus(), 
+                source.getTags());
     }
 
     @Override
@@ -144,7 +133,8 @@ public class Task implements ReadOnlyTask {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(description, startDate, startTime, endTime, taskPriority, recurringType, taskStatus, tags);
+        return Objects.hash(description, startDate, startTime, endTime, 
+                taskPriority, recurringType, taskStatus, tags);
     }
 
     @Override

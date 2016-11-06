@@ -1,6 +1,7 @@
 /** @@author A0142130A **/
 package seedu.taskell.logic.commands;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -10,7 +11,6 @@ import seedu.taskell.commons.core.LogsCenter;
 import seedu.taskell.commons.events.storage.StorageLocationChangedEvent;
 import seedu.taskell.commons.exceptions.DataConversionException;
 import seedu.taskell.model.ReadOnlyTaskManager;
-import seedu.taskell.model.task.Task;
 import seedu.taskell.storage.JsonConfigStorage;
 import seedu.taskell.storage.Storage;
 
@@ -75,8 +75,18 @@ public class SaveStorageLocationCommand extends Command {
         }
         
         saveToConfigJson();
+        
+        deleteOldFile();
+        
         model.updateFilteredListToShowAll();
         return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    /** deletes xml file in previous storage location
+     * */
+    private void deleteOldFile() {
+        File file = new File(oldStorageFilePath);
+        file.delete();
     }
 
     private void indicateStorageLocationChanged() {
@@ -84,6 +94,11 @@ public class SaveStorageLocationCommand extends Command {
         EventsCenter.getInstance().post(new StorageLocationChangedEvent(config));
     }
     
+    /** occurs when there is error writing to given filepath
+     *  i.e. invalid name, invalid directory
+     *  this method will transfer data file back to previous location and 
+     *  configure internal variables to point back to correct location
+     * */
     private void handleInvalidFilePathException() {
         logger.info("Error writing to filepath. Handling data save exception.");
         assert config != null;
@@ -103,8 +118,11 @@ public class SaveStorageLocationCommand extends Command {
     private void saveToConfigJson() {
         try {
             jsonConfigStorage.saveConfigFile(config);
+            jsonConfigStorage.readConfigFile();
         } catch (IOException e) {
             logger.severe("save to config json error");
+        } catch (DataConversionException e) {
+            logger.severe("read back config json error");
         }
     }
 

@@ -15,7 +15,7 @@ public class TypicalTestTasks {
 
     public TypicalTestTasks() {
         try {
-            archivePastEmails = new TaskBuilder().withDescription("Archieve past emails").withTaskType(Task.EVENT_TASK)
+            archivePastEmails = new TaskBuilder().withDescription("Archive past emails").withTaskType(Task.EVENT_TASK)
                     .withTaskPriority("1").withStartTime("12:30AM").withEndTime("12:45AM").withStartDate("1-1-2100")
                     .withEndDate("1-12-2100").withTags("friends").withRecurringType(RecurringType.NO_RECURRING).withTaskComplete(TaskStatus.INCOMPLETE).build();
             borrowBooks = new TaskBuilder().withDescription("Borrow books").withTaskType(Task.EVENT_TASK)

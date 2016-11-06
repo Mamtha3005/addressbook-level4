@@ -1,4 +1,5 @@
 //@@author A0142073R
+
 package seedu.taskell.logic.commands;
 
 import seedu.taskell.commons.core.Messages;
@@ -7,11 +8,8 @@ import seedu.taskell.commons.exceptions.IllegalValueException;
 import seedu.taskell.history.HistoryManager;
 import seedu.taskell.logic.commands.Command;
 import seedu.taskell.logic.commands.CommandResult;
-<<<<<<< Updated upstream
-import seedu.taskell.logic.commands.UndoCommand;
-=======
->>>>>>> Stashed changes
 import seedu.taskell.model.task.Description;
+import seedu.taskell.model.task.FloatingTask;
 import seedu.taskell.model.task.ReadOnlyTask;
 import seedu.taskell.model.task.Task;
 import seedu.taskell.model.task.TaskDate;
@@ -22,13 +20,11 @@ import seedu.taskell.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Edits a task identified using it's last displayed index from the task
- * manager.
+ * manager. Supports to edit different parameters of a task including
+ * description, time, date and priority of a task.
  */
 public class EditCommand extends Command {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
+    
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -37,6 +33,10 @@ public class EditCommand extends Command {
             + " 1 desc: buy cake st: 7am et: 8am sd: 11-12-2016 ed: 12-12-2016 p: 2\n";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Original Task: %1$s \n\nUpdated Task: %2$s";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task manager";
+    public static final String TASK_NOT_FOUND = "The target task is missing";
+    public static final String MESSAGE_TIME_CONSTRAINTS = "Start time must be before end time";
+    public static final String MESSAGE_DATE_CONSTRAINTS = "Start date must be before end date";
 
     private final int targetIndex;
 
@@ -47,77 +47,59 @@ public class EditCommand extends Command {
     private TaskTime endTime;
     private TaskPriority taskPriority;
 
-    private boolean[] hasComponentArray = new boolean[Task.NUM_BOOLEAN_TASK_COMPONENT];
+    private boolean hasChangedDescription;
+    private boolean hasChangedStartDate;
+    private boolean hasChangedEndDate;
+    private boolean hasChangedStartTime;
+    private boolean hasChangedEndTime;
+    private boolean hasChangedPriority;
 
-<<<<<<< Updated upstream
     public EditCommand(int targetIndex, Description newDescription, boolean hasChangedDescription,
             TaskDate newStartDate, boolean hasChangedStartDate, TaskDate newEndDate, boolean hasChangedEndDate,
             TaskTime newStartTime, boolean hasChangedStartTime, TaskTime newEndTime, boolean hasChangedEndTime,
             TaskPriority newPriority, boolean hasChangedPriority) throws IllegalValueException {
-=======
-    public EditCommand(int targetIndex, Description newDescription, TaskDate newStartDate, TaskDate newEndDate,
-            TaskTime newStartTime, TaskTime newEndTime, TaskPriority newPriority, boolean[] hasComponentArray)
-            throws IllegalValueException {
 
->>>>>>> Stashed changes
         this.targetIndex = targetIndex;
+
         description = newDescription;
-<<<<<<< Updated upstream
         this.hasChangedDescription = hasChangedDescription;
+
         startTime = newStartTime;
         this.hasChangedStartTime = hasChangedStartTime;
+
         endTime = newEndTime;
         this.hasChangedEndTime = hasChangedEndTime;
+
         startDate = newStartDate;
         this.hasChangedStartDate = hasChangedStartDate;
+
         endDate = newEndDate;
         this.hasChangedEndDate = hasChangedEndDate;
-=======
-        startTime = newStartTime;
-        endTime = newEndTime;
-        startDate = newStartDate;
-        endDate = newEndDate;
->>>>>>> Stashed changes
-        taskPriority = newPriority;
 
-        this.hasComponentArray = hasComponentArray;
+        taskPriority = newPriority;
+        this.hasChangedPriority = hasChangedPriority;
     }
 
-    @Override
-    public CommandResult execute() {
+    public void getEditInformation(ReadOnlyTask taskToEdit) {
 
-        UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
-
-<<<<<<< Updated upstream
-        if (lastShownList.size() < targetIndex) {
-            indicateAttemptToExecuteIncorrectCommand();
-            return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-        }
-
-        ReadOnlyTask taskToEdit = lastShownList.get(targetIndex - 1);
         if (hasChangedDescription == false) {
-=======
-        if (hasComponentArray[Task.DESCRIPTION_COMPONENT] == false) {
->>>>>>> Stashed changes
             description = taskToEdit.getDescription();
         }
-        if (hasComponentArray[Task.START_TIME_COMPONENT] == false) {
+        if (hasChangedStartTime == false) {
             startTime = taskToEdit.getStartTime();
         }
-        if (hasComponentArray[Task.END_TIME_COMPONENT] == false) {
+        if (hasChangedEndTime == false) {
             endTime = taskToEdit.getEndTime();
         }
-        if (hasComponentArray[Task.START_DATE_COMPONENT] == false) {
+        if (hasChangedStartDate == false) {
             startDate = taskToEdit.getStartDate();
         }
-        if (hasComponentArray[Task.END_DATE_COMPONENT] == false) {
+        if (hasChangedEndDate == false) {
             endDate = taskToEdit.getEndDate();
         }
-        if (hasComponentArray[Task.PRIORITY_COMPONENT] == false) {
+        if (hasChangedPriority == false) {
             taskPriority = taskToEdit.getTaskPriority();
         }
-<<<<<<< Updated upstream
-=======
     }
 
     private boolean isValidDate(ReadOnlyTask taskToEdit) {
@@ -133,22 +115,9 @@ public class EditCommand extends Command {
     }
 
     private boolean isValidTime(ReadOnlyTask taskToEdit) {
-        TaskTime currentTime = TaskTime.getTimeNow();
         if (taskToEdit.getTaskType().equals(Task.EVENT_TASK)) {
             if (endDate.equals(startDate) && endTime.isBefore(startTime)) {
-                try {
-                    endDate = endDate.getNextDay();
-                } catch (IllegalValueException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                return true;
-            } else if (endDate.equals(startDate) && endTime.isBefore(currentTime)) {
-                endTime = currentTime;
-                return true;
-            } else if (endDate.equals(startDate) && startTime.isBefore(currentTime)) {
-                startTime = currentTime;
-                return true;
+                return false;
             } else {
                 return true;
             }
@@ -156,11 +125,11 @@ public class EditCommand extends Command {
             return true;
         }
     }
-
+    
     private void jumpToNewTaskIndex() {
         jumpToIndex(targetIndex - 1);
     }
-
+    
     @Override
     public CommandResult execute() {
 
@@ -175,10 +144,8 @@ public class EditCommand extends Command {
         ReadOnlyTask taskToEdit = lastShownList.get(targetIndex - 1);
         getEditInformation(taskToEdit);
 
-        if (taskToEdit.getTaskType().equals(Task.FLOATING_TASK) && (hasComponentArray[Task.START_TIME_COMPONENT] == true
-                || hasComponentArray[Task.END_TIME_COMPONENT] == true
-                || hasComponentArray[Task.START_DATE_COMPONENT] == true
-                || hasComponentArray[Task.END_DATE_COMPONENT] == true)) {
+        if (taskToEdit.getTaskType().equals(Task.FLOATING_TASK) && (hasChangedStartTime == true
+                || hasChangedEndTime == true || hasChangedStartDate == true || hasChangedEndDate == true)) {
             return new CommandResult(FloatingTask.EDIT_FLOATING_NOT_ALLOWED);
         }
 
@@ -189,18 +156,25 @@ public class EditCommand extends Command {
         if (!isValidDate(taskToEdit)) {
             return new CommandResult(MESSAGE_DATE_CONSTRAINTS);
         }
->>>>>>> Stashed changes
 
         Task newTask = new Task(description, taskToEdit.getTaskType(), startDate, endDate, startTime, endTime,
                 taskPriority, taskToEdit.getRecurringType(), taskToEdit.getTaskStatus(), taskToEdit.getTags());
 
         try {
             model.editTask(taskToEdit, newTask);
-        } catch (TaskNotFoundException | DuplicateTaskException pnfe) {
-            assert false : "The target task cannot be missing";
-        } 
+            HistoryManager.getInstance().addTask(newTask);
+            HistoryManager.getInstance().addOldTask((Task) taskToEdit);
+            jumpToNewTaskIndex();
+        } catch (DuplicateTaskException pnfe) {
+            HistoryManager.getInstance().deleteLatestCommand();
+            return new CommandResult(MESSAGE_DUPLICATE_TASK);
+        } catch (TaskNotFoundException pnfe) {
+            HistoryManager.getInstance().deleteLatestCommand();
+            return new CommandResult(TASK_NOT_FOUND);
+        }
 
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit, newTask));
     }
 }
+
 // @@author

@@ -1,7 +1,6 @@
 //@@author A0148004R
 package guitests;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static seedu.taskell.logic.commands.DoneCommand.MESSAGE_DONE_TASK_SUCCESS;
 
@@ -34,13 +33,15 @@ public class DoneCommandTest extends TaskManagerGuiTest {
         commandBox.runCommand("done " + targetIndexOneIndexed);
         TestTask taskToFinish = currentList[targetIndexOneIndexed-1]; //-1 because array uses zero indexing
         
+        //confirm the result message is correct
+        assertResultMessage(String.format(MESSAGE_DONE_TASK_SUCCESS, taskToFinish));
+        
+        commandBox.runCommand("list-done");
+        
         //confirm the new card contains the right data
         TaskCardHandle updatedCard = taskListPanel.navigateToTask(taskToFinish.getDescription().description);
         
         assertEquals(TaskStatus.FINISHED, updatedCard.getTaskComplete());
-        
-        //confirm the result message is correct
-        assertResultMessage(String.format(MESSAGE_DONE_TASK_SUCCESS, taskToFinish));
     }
 
 }

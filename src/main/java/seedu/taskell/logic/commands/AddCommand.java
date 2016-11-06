@@ -32,14 +32,11 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-<<<<<<< Updated upstream
 
-    public AddCommand(String description, String taskType, String startDate, String endDate, String startTime, String endTime, String taskPriority, String recurringType, Set<String> tags)
-            throws IllegalValueException {
-=======
-    public AddCommand(String taskType, String[] taskComponentArray, boolean[] hasTaskComponentArray, Set<String> tags) throws IllegalValueException {
+    public AddCommand(String description, String taskType, String startDate, String endDate, 
+            String startTime, String endTime, String taskPriority, 
+            String recurringType, Set<String> tags) throws IllegalValueException {
         
->>>>>>> Stashed changes
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -47,10 +44,10 @@ public class AddCommand extends Command {
         
         switch (taskType) {
         case Task.FLOATING_TASK: 
-            this.toAdd = new FloatingTask(taskComponentArray, hasTaskComponentArray, new UniqueTagList(tagSet));
+            this.toAdd = new FloatingTask(description, taskPriority, recurringType, TaskStatus.INCOMPLETE, new UniqueTagList(tagSet));
             break;
         case Task.EVENT_TASK:
-            this.toAdd = new EventTask(taskComponentArray, hasTaskComponentArray, new UniqueTagList(tagSet));
+            this.toAdd = new EventTask(description, startDate, endDate, startTime, endTime, taskPriority, recurringType, TaskStatus.INCOMPLETE, new UniqueTagList(tagSet));
             break;
         default:
             toAdd = null;
@@ -64,12 +61,17 @@ public class AddCommand extends Command {
         try {
             model.addTask(toAdd);
             HistoryManager.getInstance().addTask(toAdd);
+            jumpToNewTaskIndex();
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             HistoryManager.getInstance().deleteLatestCommand();
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }
-
+    }
+    
+    private void jumpToNewTaskIndex() {
+        int indexOfNewTask = model.getFilteredTaskList().size()-1;
+        jumpToIndex(indexOfNewTask);
     }
 
 }

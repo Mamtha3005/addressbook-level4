@@ -37,7 +37,7 @@ This developer guide will help you understand the design and implementation of T
 4. **Buildship Gradle Integration** plugin from the Eclipse Marketplace
 
 
-#### Importing The Project Into Eclipse
+#### Importing the Project into Eclipse
 
 0. Fork this repository, and clone the fork to your computer
 1. Open Eclipse (Note: Ensure you have installed the **e(fx)clipse** and **buildship** plugins as given in the prerequisites above)
@@ -86,14 +86,14 @@ Two of those classes play important roles at the architecture level.
 
 * `LogsCenter` : Used by many classes to write log messages to the Application's log file.
 
-The rest of the Application consists four components.
+The rest of the Application consists five components.
 * [**`UI`**](#ui-component) : UI of the Application.
 * [**`Logic`**](#logic-component) : Command executor.
 * [**`Model`**](#model-component) : Data Holder of the Application in-memory.
 * [**`Storage`**](#storage-component) : Data read from, and written to the hard disk.
 * [**`History`**](#history-component) : Data holder of Application's command history (for undo only).
 
-Each of the four components
+Each of the five components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
@@ -443,7 +443,26 @@ Use case ends
 > 3a1. Taskell shows an error message <br>
   Use case resumes at step 2
 
-4a. User tries to mark a completed task as completed
+#### Use case: Undone task
+
+**MSS**
+
+1. User requests to list tasks
+2. Taskell shows a list of completed tasks
+3. User requests to mark a specific task in the list as uncompleted
+4. Taskell marks the task as uncompleted<br>
+Use case ends
+
+**Extensions**
+
+2a. The list is empty
+
+3a. The given index is invalid
+
+> 3a1. Taskell shows an error message <br>
+  Use case resumes at step 2
+  
+4a. User tries to mark a uncompleted task as uncompleted
   
 #### Use case: Help command
 
@@ -629,7 +648,7 @@ NIL
 #### Remember the Milk
 **Pros:**<br>
 1. Can be used offline and tasks are synced once internet connection is established<br>
-2. Can handle some natural language processing by saving deadlines from task information itself (e.g. Do math homework tomorrow: Saves task with deadline set to tomorrow)<br>
+2. Can handle some natural languages processing by saving deadlines from task information itself (e.g. Do math homework tomorrow: Saves task with deadline set to tomorrow)<br>
 3. Can undo when marking tasks as done (recover from accidentally marking a task as done)<br>
 4. Can set priority, and list tasks by priority<br>
 5. Can set recursive tasks<br>
@@ -662,3 +681,16 @@ NIL
 **Cons:**<br>
 1. Requires internet connection<br>
 2. Has no support for recurring tasks<br>
+
+<!--- @@author A0148004R --->
+
+Task Managers | WunderList | Remember the Milk | Google Calendar | Any.do | Taskell
+-------- | :---------- | :--------- | :-----------| :-----------| :-----------
+CRUD | Available | Available | Available | Available | Available
+Undo | Not Available | Available | Not Available | Available | Available
+Sync across multiple platform | Available | Available | Available | Available | Available
+Internet required | Required | Required | Required | Required | Not Required
+Calendar | Not Available | Available | Available | Available | Available
+Other Features | Attach different files and picture inside the task | Handle some natural languages | Able to add public holiday |Do a daily review at the start/end of day | Support for recurring tasks
+
+<!--- @@author --->

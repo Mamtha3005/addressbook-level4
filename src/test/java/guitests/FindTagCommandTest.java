@@ -35,6 +35,11 @@ public class FindTagCommandTest extends TaskManagerGuiTest {
         commandBox.runCommand("find-tagfriends");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
     }
+    
+    @Test
+    public void find_bySubstringKeyword_success() {
+        assertFindResult("find MonEY", td.borrowBooks, td.collectParcel);
+    }
 
     private void assertFindResult(String command, TestTask... expectedHits ) {
         commandBox.runCommand(command);

@@ -3,6 +3,7 @@ package seedu.taskell.logic.commands;
 import seedu.taskell.commons.core.EventsCenter;
 import seedu.taskell.commons.core.Messages;
 import seedu.taskell.commons.events.ui.IncorrectCommandAttemptedEvent;
+import seedu.taskell.commons.events.ui.JumpToListRequestEvent;
 import seedu.taskell.model.Model;
 
 /**
@@ -43,4 +44,13 @@ public abstract class Command {
     protected void indicateAttemptToExecuteIncorrectCommand() {
         EventsCenter.getInstance().post(new IncorrectCommandAttemptedEvent(this));
     }
+    
+    //@@author A0139257X-reused
+    /**
+     * Raises an event to jump to the given index
+     */
+    protected void jumpToIndex(int index) {
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(index));
+    }
+    //@@author
 }

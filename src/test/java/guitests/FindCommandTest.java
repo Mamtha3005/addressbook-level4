@@ -36,6 +36,11 @@ public class FindCommandTest extends TaskManagerGuiTest {
         assertFindResult("find friends owesMoney", td.borrowBooks);
     }
     
+    @Test
+    public void find_bySubstringKeyword_success() {
+        assertFindResult("find fri", td.archivePastEmails, td.borrowBooks);
+    }
+    
     /** @@author **/
 
     @Test

@@ -8,8 +8,11 @@ import seedu.taskell.logic.commands.CommandResult;
 import seedu.taskell.logic.parser.Parser;
 import seedu.taskell.model.Model;
 import seedu.taskell.model.task.ReadOnlyTask;
+import seedu.taskell.model.task.TaskStatus;
 import seedu.taskell.storage.Storage;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.logging.Logger;
 
 /**
@@ -24,6 +27,8 @@ public class LogicManager extends ComponentManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.parser = new Parser();
+        
+        this.model.updateFilteredtaskListCompleted(new HashSet<>(Arrays.asList(TaskStatus.INCOMPLETE)));
     }
 
     @Override

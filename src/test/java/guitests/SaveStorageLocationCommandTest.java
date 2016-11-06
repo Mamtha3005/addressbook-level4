@@ -44,10 +44,10 @@ public class SaveStorageLocationCommandTest extends TaskManagerGuiTest {
     /** @@author A0142130A-unused **/
     //This test is not run because it has assertion error on Travis build
     //@Test
-    public void saveToInvalidFilePath() throws DataConversionException {
+    public void saveToInvalidFilePath_fail() throws DataConversionException {
         JsonConfigStorage jsonConfigStorage = new JsonConfigStorage(CONFIG_LOCATION);
 
-        commandBox.runCommand("save E:");   
+        commandBox.runCommand("save ***");   
         
         Optional<Config> newConfig = jsonConfigStorage.readConfig(CONFIG_JSON);
         String newFilePath = newConfig.get().getTaskManagerFilePath();

@@ -14,6 +14,16 @@ public class StringUtil {
         List<String> strings = Arrays.asList(split);
         return strings.stream().filter(s -> s.equals(query.toLowerCase())).count() > 0;
     }
+    
+    /** @@author A0142130A **/
+    /** checks if source contains query as substring and ignores case
+     */
+    public static boolean containsSubstringAndIgnoreCase(String source, String query) {
+        String[] split = source.toLowerCase().split("\\s+");
+        List<String> strings = Arrays.asList(split);
+        return strings.stream().filter(s -> s.contains(query.toLowerCase())).count() > 0;
+    }
+    /** @@author **/
 
     /**
      * Returns a detailed message of the t, including the stack trace.

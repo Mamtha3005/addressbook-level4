@@ -1,7 +1,6 @@
 
 .error {
-    -fx-background-color: #EF5350;
-    -fx-text-fill: white;
+    -fx-background-color: red;
 }
 
 

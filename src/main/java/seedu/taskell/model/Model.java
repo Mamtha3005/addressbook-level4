@@ -38,7 +38,7 @@ public interface Model {
     void updateFilteredTaskListPriority(Set<String> keywords);
     
     /** Updates the filter of the filtered task list to filter by the given keywords (AND operation)*/
-    void updateFilteredTaskList(Set<String> keywords);
+    void updateFilteredTaskListByAllKeywords(Set<String> keywords);
     
     /** Updates the filter of the filtered task list to filter by the given date*/
     void updateFilteredtaskListDate(Set<String> keywords);

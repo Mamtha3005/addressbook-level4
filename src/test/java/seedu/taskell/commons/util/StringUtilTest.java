@@ -39,16 +39,28 @@ public class StringUtilTest {
     }
 
     @Test
-    public void getDetails_exceptionGiven(){
+    public void getDetails_exceptionGiven() {
         assertThat(StringUtil.getDetails(new FileNotFoundException("file not found")),
                    containsString("java.io.FileNotFoundException: file not found"));
     }
 
     @Test
-    public void getDetails_nullGiven_assertionError(){
+    public void getDetails_nullGiven_assertionError() {
         thrown.expect(AssertionError.class);
         StringUtil.getDetails(null);
     }
 
+    /** @@author A0142130A **/
+    @Test
+    public void containsSubstringAndIgnoreCase_true() {
+        boolean result = StringUtil.containsSubstringAndIgnoreCase("butterfly", "butter");
+        assertTrue(result);
+    }
 
+    @Test
+    public void containsSubstringAndIgnoreCase_false() {
+        boolean result = StringUtil.containsSubstringAndIgnoreCase("chicken", "butter");
+        assertFalse(result);
+    }
+    /** @@author **/
 }

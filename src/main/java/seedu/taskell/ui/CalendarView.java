@@ -1,11 +1,11 @@
 /** @@author A0142130A **/
 package seedu.taskell.ui;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import jfxtras.scene.control.agenda.Agenda;
 import jfxtras.scene.control.agenda.Agenda.Appointment;
+import seedu.taskell.commons.core.UnmodifiableObservableList;
 import seedu.taskell.model.Model;
 import seedu.taskell.model.ReadOnlyTaskManager;
 import seedu.taskell.model.task.ReadOnlyTask;
@@ -48,9 +48,8 @@ public class CalendarView {
     
     public void loadTasks() {
         agenda.appointments().clear();
-        
-        ReadOnlyTaskManager taskManager = model.getTaskManager();
-        UniqueTaskList taskList = taskManager.getUniqueTaskList();
+
+        UnmodifiableObservableList<ReadOnlyTask> taskList = model.getFilteredTaskList();
         
         ArrayList<Appointment> appointments = new ArrayList<>();
         int i=1;
@@ -61,7 +60,7 @@ public class CalendarView {
                 appointments.add(new Agenda.AppointmentImplLocal()
                         .withStartLocalDateTime(task.getStartDate().toLocalDateTime(task.getStartTime()))
                         .withEndLocalDateTime(task.getEndDate().toLocalDateTime(task.getEndTime()))
-                        .withSummary(task.getDescription().description)
+                        .withSummary(String.valueOf(i))
                         .withAppointmentGroup(
                                 new Agenda.AppointmentGroupImpl().withStyleClass("group"+i)));
             }

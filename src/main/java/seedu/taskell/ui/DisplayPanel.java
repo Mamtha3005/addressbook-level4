@@ -77,6 +77,8 @@ public class DisplayPanel extends UiPart {
         
         displayPanel.displayTextArea.setText(WELCOME_MESSAGE);
        
+        displayPanel.displayTextArea.setWrapText(true);
+        
         return displayPanel;
     }
     
@@ -104,9 +106,8 @@ public class DisplayPanel extends UiPart {
      *  fills panel with Agenda for events for the week
      * */
     public void loadCalendar(AnchorPane placeholder) {
-               
-        placeholder.getChildren().remove(displayTextArea);
-        
+
+        placeholder.getChildren().clear();
         agenda = calendarView.getAgenda();
         FxViewUtil.applyAnchorBoundaryParameters(agenda, 0.0, 0.0, 0.0, 0.0);
         placeholder.getChildren().add(agenda);
