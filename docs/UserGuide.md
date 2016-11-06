@@ -241,7 +241,7 @@ Undo most recent command executed.<br>
 Undo by index of command history.<br>
 Example: `hist`, then `undo 3`, will undo third command in command history.
 
- <br><p align="center"><img src="images/screenshots/undo_01.PNG" width="800"></br>
+ <p align="center"><img src="images/screenshots/undo_01.PNG" width="800"></br>
  <br><p align="center"><img src="images/screenshots/undo_02.PNG" width="800"></br> <br>
 Diagrams 5 and 6: `undo 2` will undo 2nd command in history
 
@@ -397,6 +397,7 @@ List Done Tasks | `list-done`
 Mark Task Done | `done` INDEX
 Mark Task Undone | `undone` INDEX
 Undo | `undo` or `undo` INDEX
+
 <!-- @@author -->
 
 <!--- @@author A0139257X --->
