@@ -385,7 +385,8 @@ Add Event | `add` TASK <i>by</i> DATE <br> `add` TASK <i>by</i> TIME <br> `add` 
 Calendar View | `calendar` or `cal`
 Clear | `clear`
 Delete | `delete` INDEX
-Edit | `edit` INDEX NEWTASK
+Edit | `edit` INDEX `desc:` NEW_DESCRIPTION 
+`st:` NEW_START_TIME `et:` NEW_END_TIME `ed:` NEW_END_DATE `sd:` NEW_START_DATE `p:` NEW_PRIORITY
 Find Tasks | `find` KEYWORD [MORE_KEYWORDS]
 Find Tasks by Tag | `find-tag` KEYWORD [MORE_KEYWORDS]
 Help | `help`
