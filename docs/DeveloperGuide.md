@@ -367,19 +367,19 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | user | delete a task | remove task that I no longer need.
 `* * *` | user | find a task by its description | locate details of tasks without having to go through the entire list.
 `* * *` | user | categorize my tasks | group and view tasks of similar type.
-`* * *` | user | view all the tasks, sorted by day, month | plan my schedule.
+`* * *` | user | view all the tasks, sorted by day | plan my schedule.
 `* * *` | user | edit task | make changes to the task created.
 `* * *` | user | have a start and end time for an event | take note of the duration of the event.
 `* * *` | user | set deadlines for a task | remember when the task is due.
 `* * *` | user | undo my previous action | correct any mistakes made.
 `* * *` | user | mark a task as done | focus on the uncompleted tasks.
-`* * *` | user | have flexible command format |have various options to execute a command.
+`* * *` | user | have flexible command format | have various options to execute a command.
+`* * *` | user | sort tasks by priority | view the most important tasks.
 `* * *` | user | specify a folder with cloud syncing service as the storage location | I can easily access my task manager from different computers.
-`* * *` | user | I want to see a list of completed tasks | view all the tasks I had done.
+`* * *` | user | see a list of completed tasks | view all the tasks I had done.
 `* *` | user |  delete tasks based on a certain index | delete a few tasks instead of one.
 `*` | user | set some of my task recursively | schedule them on a daily/weekly/monthly basis.
 `*` | user | be able to block multiple timeslots, and release the timeslots when timing is confirmed|  schedule in events which have uncertain timings more efficiently.
-`*` | user | sort tasks by priority | view the most important tasks.
 `*` | user | edit my notification time period | customise if I wanted to be reminded earlier or later.
 `*` | user |  use the history command | saves time typing repeated commands.
 `*` | user |  view the task in either calendar form or list form |  switch between the two display format.
@@ -447,7 +447,7 @@ Use case ends
 
 **MSS**
 
-1. User requests to list tasks
+1. User requests to list completed tasks
 2. Taskell shows a list of completed tasks
 3. User requests to mark a specific task in the list as uncompleted
 4. Taskell marks the task as uncompleted<br>
@@ -470,7 +470,7 @@ Use case ends
 
 1. User requests to view the different command
 2. User enters "help"
-3. User displays a summary of all the different command.
+3. User displays a summary of all the different commands
 Use case ends
 
 **Extensions**
@@ -632,55 +632,6 @@ NIL
 > Tasks with no deadline
 
 ## Appendix E : Product Survey
-#### WunderList
-**Pros:**<br>
-1. Has support for cross-platform operations<br>
-2. Can share tasks with other people and manage them<br> 
-3. Can categorize tasks into different categories<br>
-4. Can attach different types of file inside the task, such as photos, PDF and PowerPoint<br>
-
-**Cons:**<br>
-1. Has limited number of priority levels<br>
-2. Has no undo operation<br>
-
-<!--- @@author A0142130A --->
-
-#### Remember the Milk
-**Pros:**<br>
-1. Can be used offline and tasks are synced once internet connection is established<br>
-2. Can handle some natural languages processing by saving deadlines from task information itself (e.g. Do math homework tomorrow: Saves task with deadline set to tomorrow)<br>
-3. Can undo when marking tasks as done (recover from accidentally marking a task as done)<br>
-4. Can set priority, and list tasks by priority<br>
-5. Can set recursive tasks<br>
-
-**Cons:**<br>
-1. Need to click frequently to enter or edit a task<br>
-2. Need to remember lots of shortcuts, so user is less likely to use them<br>
-3. Has a cluttered interface, which is not intuitive<br>
-4. Does not support calendar view in-house<br>
-
-<!--- @@author --->
-
-#### Google Calendar
-**Pros:**<br>
-1. Can add in public holidays <br>
-2. Can update in terms of time zone<br>
-3. Can customize background picture<br>
-
-**Cons:**<br>
-1. Does not have flexibility in viewing the calendar<br>
-2. Has too much information in 1 page in application<br>
-
-#### Any.do
-**Pros:**<br>
-1. Displays a reminder when the task is almost due (set in advance)<br>
-2. Able to clear all tasks in one go<br>
-3. Do a daily review at the start/end of day<br>
-4. Arranges tasks by today, tomorrow, someday<br>
-
-**Cons:**<br>
-1. Requires internet connection<br>
-2. Has no support for recurring tasks<br>
 
 <!--- @@author A0148004R --->
 
