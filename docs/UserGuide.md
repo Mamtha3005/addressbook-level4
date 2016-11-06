@@ -219,28 +219,27 @@ Diagram 3: Keying in `find cs2010` displays list of tasks with "cs2010" as one o
 
 #### Showing history : `history` or `hist`
 You can view the command history available for undo on the right panel to refer to when undoing previous commands.<br>
-To save your time, Taskell has a short form command `hist`. <br>
-Format: `history` <br>
 
-<br><p align="center"><img src="images/screenshots/history_01.PNG" width="800"></br>
- <br><p align="center"><img src="images/screenshots/history_02.PNG" width="800"></br> <br>
- Diagram 4: `hist` will show list of command history on the right panel
+Format: `history` or `hist` 
+
+ <p align="center"><img src="images/screenshots/history_02.PNG" width="800"></br> <br>
+ Diagram 4: Keying in `hist` will show list of command history on the right panel
 
 > Take Note! <br>
 > * Only commands available for undo are shown here. 
-> * Refer to undo section for more information about what commands undo supports.
+> * Refer to undo section below for more information about what commands undo supports.
 
 #### Reverting previous action : `undo`
 If you wish to undo your most recent action, you can do so by using the undo command.<br>
-You can also undo previous commands, <kbd>Enter</kbd> `hist` to see a list of 
+To undo previous commands, <kbd>Enter</kbd> `hist` to see a list of 
 previous commands that can be undone.<br>
-Then use undo command with specified INDEX from the list of command history.<br>
+Then use undo command with specified INDEX from the list of command history.
 Formats: <br>
 -`undo`<br> 
 Undo most recent command executed.<br>
 -`undo INDEX`<br> 
 Undo by index of command history.<br>
-Example: `hist`, then `undo 3`, will undo third command in command history.<br>
+Example: `hist`, then `undo 3`, will undo third command in command history.
 
  <br><p align="center"><img src="images/screenshots/undo_01.PNG" width="800"></br>
  <br><p align="center"><img src="images/screenshots/undo_02.PNG" width="800"></br> <br>
@@ -253,27 +252,21 @@ Diagrams 5 and 6: `undo 2` will undo 2nd command in history
 <!--- @@author ---> 
 
 #### Deleting a task : `delete`
-To delete a task, use the delete command. This command deletes the task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
+You can use the delete command to delete a task at a specified INDEX. The index refers to the index number shown in the most recent listing.<br>
 Format: `delete INDEX`<br>
 Example: `find violin`, then `delete 1`<br>
 This deletes the 1st task in the results of the find command.
 
-<!--- @@author A0142130A --->
-
- <br><p align="center"><img src="images/screenshots/delete_01.PNG" width="800"></br>
- <br><p align="center"><img src="images/screenshots/delete_02.PNG" width="800"></br><br>
-Diagrams 7 and 8: Entering `delete 20` will delete "read lord of the rings trilogy".<br>
-
-<!--- @@author --->
-
 <!--- @@author A0148004R --->
 
 #### Marking a task as completed: `done`
+You can use the done command to mark an uncompleted task as completed.
 Format: `done` INDEX<br>
 Example: `done` 1<br>
 This marks the first task as finished and moves it to the completed list.<br>
 
 #### Marking a task as incomplete: `undone`
+You can use the undone command to mark a completed task as uncompleted.
 Format: `undone` INDEX<br>
 Example: `undone` 1<br>
 This marks the 1st task as incomplete and moves it to the uncompleted list.<br>
@@ -285,12 +278,16 @@ This marks the 1st task as incomplete and moves it to the uncompleted list.<br>
 #### Editing a task : `edit`
 To edit a task<br>
 Formats: 
-- `edit` INDEX <i>st:</i>[NEWSTARTTIME] <i>et:</i>[NEWENDTIME] <i>desc:</i> [NEWDESCRIPTION] <i>sd:</i> [NEWSTARTDATE] <i>ed:</i> [NEWENDDATE] <i>p:</i> [NEWPRIORITY]<br>
+- `edit` INDEX <i>st:</i> NEWSTARTTIME <i>et:</i> NEWENDTIME <i>desc:</i> NEWDESCRIPTION <i>sd:</i> NEWSTARTDATE <i>ed:</i> NEWENDDATE <i>p:</i> NEWPRIORITY <br>
  <br><p align="center"><img src="images/editCmd.png" width="800"></br>
 Diagram 9: Edits the 1st task on the list.<br>
 
 Entering "edit 1 desc: send all emails sd: 11-11-2016 ed: 12-11-2016 st: 3pm et: 4pm p: 3", will update description to "send all emails", start date to 11-11-2016, end date to 12-11-2016, start time to 3pm end time to 4pm and priority to 3.<br>
 
+> Take Note! <br>
+> * You only need to key in the necessary parameters of the task you would like to change. Not all parameters are required.
+> * Order of the parameters are not important.
+    
 <!--- @@author --->
 
 <!--- @@author A0142130A ---> 
@@ -304,8 +301,7 @@ Diagram 10: An example of how the current time marker looks like.<br>
 Calendar view depends on the list of tasks on the left panel, with each section marked with the index corresponding to the task, meaning a block marked "4" would correspond with the 4th task.<br>
 By default, the calendar view will be shown on the right panel. As `history` displays command history on the right panel as well, this command is meant for your convenience if you want to view calendar again.<br>
 Please note that entering other commands (i.e. `find`, `add`) will also revert the right panel back to calendar as it is the default view. <br>
-To save your time, Taskell has a short form command `cal`. <br>
-Format: `calendar`<br>
+Format: `calendar` or `cal` <br>
 
 #### Saving the information in Taskell : `save`
 You can specify the path of a folder to store Taskell's data file. Please note that you should have permissions to access the folder. <br>
@@ -342,7 +338,7 @@ Windows |  Linux
 Permanently clears **all** task data. <br>
 Format: `clear`  
 
- <br><p align="center"><img src="images/screenshots/clear.PNG" width="800"></br><br>
+<p align="center"><img src="images/screenshots/clear.PNG" width="800"></br><br>
 Diagram 12: Typing `clear` will prompt a confirm pop-up window <br>
 
 > Take Note! <br>
